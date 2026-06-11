@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { css } from '../../styled-system/css';
 import { hstack, vstack, container } from '../../styled-system/patterns';
+import ScrollRevealText from './components/ScrollRevealText';
 
 const SLIDES = [
   {
@@ -23,6 +24,7 @@ const SLIDES = [
 function HeroSection() {
   const [slideIdx, setSlideIdx] = useState(0);
   const [fade, setFade] = useState<'in' | 'out'>('in');
+  const [videoLoaded, setVideoLoaded] = useState(false);
 
   useEffect(() => {
     // 5초마다 다음 슬라이드로
@@ -58,31 +60,48 @@ function HeroSection() {
         alignItems: 'center',
         justifyContent: 'center',
       })}
+      style={{ overflow: 'hidden' }}
     >
+      {/* 배경 — 썸네일 포스터 (영상 로드 전 표시) */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          zIndex: 0,
+          backgroundImage: 'url(https://vumbnail.com/1073125652.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          transition: 'opacity 1s ease',
+          opacity: videoLoaded ? 0 : 1,
+        }}
+      />
+
       {/* Vimeo 배경 영상 */}
       <div
-        className={css({
+        style={{
           position: 'absolute',
           inset: 0,
           zIndex: 0,
           pointerEvents: 'none',
-        })}
+          overflow: 'hidden',
+          opacity: videoLoaded ? 1 : 0,
+          transition: 'opacity 1s ease',
+        }}
       >
         <iframe
-          src="https://player.vimeo.com/video/1073125652?title=0&muted=1&autoplay=1&autopause=0&controls=0&loop=1&transparent=0&app_id=122963"
+          src="https://player.vimeo.com/video/1073125652?background=1&autoplay=1&loop=1&muted=1"
           style={{
             position: 'absolute',
             top: '50%',
             left: '50%',
-            width: '177.78vh',   /* 16:9 비율 유지 */
-            height: '56.25vw',
-            minWidth: '100%',
-            minHeight: '100%',
+            width: 'max(177.78vh, 100vw)',
+            height: 'max(56.25vw, 100vh)',
             transform: 'translate(-50%, -50%)',
             border: 'none',
           }}
           allow="autoplay; fullscreen"
           title="hero video"
+          onLoad={() => setVideoLoaded(true)}
         />
       </div>
 
@@ -91,6 +110,7 @@ function HeroSection() {
 
       {/* 카피라이팅 */}
       <div
+        key={slideIdx}
         className={css({
           position: 'relative',
           zIndex: 10,
@@ -98,22 +118,20 @@ function HeroSection() {
           paddingLeft: '24px',
           paddingRight: '24px',
           maxWidth: '800px',
-          transition: 'opacity 0.5s ease, transform 0.5s ease',
         })}
-        style={{
-          opacity: fade === 'in' ? 1 : 0,
-          transform: fade === 'in' ? 'translateY(0)' : 'translateY(12px)',
-        }}
       >
         <h1
           className={css({
-            fontSize: { base: '26px', md: '48px' },
+            fontSize: { base: '36px', md: '64px' },
             fontWeight: '800',
             color: 'white',
             lineHeight: '1.3',
             marginBottom: '20px',
             wordBreak: 'keep-all',
             overflowWrap: 'break-word',
+            opacity: 0,
+            animation: 'fadeSlideUp 0.7s ease forwards',
+            animationDelay: '0.1s',
           })}
         >
           {slide.main}
@@ -122,11 +140,14 @@ function HeroSection() {
         <p
           className={css({
             color: 'rgba(255,255,255,0.85)',
-            fontSize: { base: '14px', md: '18px' },
+            fontSize: { base: '16px', md: '20px' },
             lineHeight: '1.7',
             marginBottom: '36px',
             wordBreak: 'keep-all',
             overflowWrap: 'break-word',
+            opacity: 0,
+            animation: 'fadeSlideUp 0.7s ease forwards',
+            animationDelay: '0.5s',
           })}
         >
           {slide.sub}
@@ -148,6 +169,9 @@ function HeroSection() {
             textDecoration: 'none',
             borderRadius: '9999px',
             transition: 'background-color 0.2s, transform 0.2s',
+            opacity: 0,
+            animation: 'fadeSlideUp 0.7s ease forwards',
+            animationDelay: '0.9s',
             _hover: {
               backgroundColor: '#1d6a9f',
               transform: 'translateY(-2px)',
@@ -197,72 +221,162 @@ export default function Home() {
         <HeroSection />
 
         {/* About Section */}
-        <section className={container({ maxWidth: '80rem', paddingX: '4', paddingY: { base: '4', md: '6' } })}>
+        <section
+          style={{
+            padding: '150px 0',
+            backgroundColor: '#fff',
+          }}
+        >
           <div
-            className={css({
+            style={{
+              maxWidth: '1520px',
+              margin: '0 auto',
+              padding: '0 50px',
               display: 'grid',
-              gridTemplateColumns: { base: '1fr', md: '1fr 1fr' },
-              gap: '12',
+              gridTemplateColumns: '1fr 1fr',
+              gap: '80px',
               alignItems: 'center',
-            })}
+            }}
           >
-            <div className={css({ height: { base: '256px', md: '384px' }, borderRadius: 'lg', overflow: 'hidden', backgroundColor: '#d1d5db' })}>
-              <img
-                src="https://images.unsplash.com/photo-1583422409516-2895a77efded?w=600&h=600&fit=crop"
-                alt="다이빙"
-                className={css({ width: '100%', height: '100%', objectFit: 'cover' })}
-              />
-            </div>
+            {/* 좌측 텍스트 */}
             <div>
-              <h2
-                className={css({
-                  fontSize: { base: '24px', md: '32px' },
-                  fontWeight: 'bold',
-                  marginBottom: '6',
-                  color: '#1f1e1e',
-                })}
+              {/* 라벨 */}
+              <div
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  backgroundColor: '#eaf4fb',
+                  color: '#267db6',
+                  fontSize: '13px',
+                  fontWeight: '700',
+                  letterSpacing: '0.08em',
+                  padding: '6px 14px',
+                  borderRadius: '9999px',
+                  marginBottom: '28px',
+                  textTransform: 'uppercase',
+                }}
               >
-                신비로운 수중 세계의 첫걸음,
+                <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#267db6', display: 'inline-block' }} />
+                Expert Instructor
+              </div>
+
+              {/* 헤딩 */}
+              <h2
+                style={{
+                  fontSize: '44px',
+                  fontWeight: '900',
+                  lineHeight: '1.2',
+                  marginBottom: '24px',
+                  wordBreak: 'keep-all',
+                }}
+              >
+                <span style={{ color: '#267db6' }}>
+                  <ScrollRevealText text="수중 세계의 전문가와 함께하는" charDelay={45} />
+                </span>
                 <br />
-                <span className={css({ color: '#267db6' })}>드림다이빙과 함께하세요.</span>
+                <span style={{ color: '#1f1e1e' }}>
+                  <ScrollRevealText text="맞춤형 스쿠버 다이빙 여정." charDelay={45} />
+                </span>
               </h2>
-              <p className={css({ color: '#666666', fontSize: 'lg', lineHeight: 'relaxed', marginBottom: '4' })}>
-                전문적인 교육과 안전한 장비로 바다의 신비로움을 경험하세요.
+
+
+
+              {/* 본문 */}
+              <p
+                style={{
+                  fontSize: '17px',
+                  color: '#555',
+                  lineHeight: '1.85',
+                  marginBottom: '40px',
+                  wordBreak: 'keep-all',
+                }}
+              >
+                <ScrollRevealText
+                  text="믿을 수 있는 전문 강사진과 함께하는 다이빙, 1:1 맞춤 교육부터 강사 양성까지 체계적인 교육 과정을 제공합니다."
+                  charDelay={20}
+                />
               </p>
-              <button className={css({ backgroundColor: '#267db6', color: 'white', paddingX: '8', paddingY: '3', borderRadius: 'lg', fontWeight: 'bold' })}>
-                더 알아보기
-              </button>
+
+              {/* 버튼 */}
+              <a
+                href="/about"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '14px 28px',
+                  border: '2px solid #267db6',
+                  borderRadius: '8px',
+                  color: '#267db6',
+                  fontSize: '15px',
+                  fontWeight: '700',
+                  textDecoration: 'none',
+                  transition: 'all 0.2s',
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLAnchorElement).style.backgroundColor = '#267db6';
+                  (e.currentTarget as HTMLAnchorElement).style.color = 'white';
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'transparent';
+                  (e.currentTarget as HTMLAnchorElement).style.color = '#267db6';
+                }}
+              >
+                드림다이브 소개
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
             </div>
-          </div>
-        </section>
 
-        {/* Gallery Section 1 */}
-        <section className={css({ backgroundColor: '#f9fafb', paddingY: { base: '4', md: '6' } })}>
-          <div className={container({ maxWidth: '80rem', paddingX: '4' })}>
-            <h2 className={css({ fontSize: { base: '24px', md: '32px' }, fontWeight: 'bold', marginBottom: '4', color: '#1f1e1e' })}>
-              수중 세계의 신비로운 모습
-            </h2>
-            <p className={css({ color: '#666666', marginBottom: '12', fontSize: 'lg' })}>우리가 경험하는 다양한 다이빙 스팟들</p>
-
+            {/* 우측 5장 이미지 그리드 */}
             <div
-              className={css({
+              style={{
                 display: 'grid',
-                gridTemplateColumns: { base: '1fr', md: 'repeat(3, 1fr)' },
-                gap: '6',
-              })}
+                gridTemplateColumns: '1fr 1fr',
+                gridTemplateRows: 'auto auto',
+                gap: '12px',
+              }}
             >
-              {[1, 2, 3, 4, 5, 6].map((i) => (
-                <div key={i} className={css({ backgroundColor: '#d1d5db', borderRadius: 'lg', overflow: 'hidden', height: '256px' })}>
+              {/* 이미지 1 — 왼쪽 상단 (2행 차지) */}
+              <div
+                style={{
+                  gridRow: '1 / 3',
+                  borderRadius: '16px',
+                  overflow: 'hidden',
+                  height: '460px',
+                  position: 'relative',
+                }}
+              >
+                <img
+                  src="/assets/main/49eab77bb0b32.jpg"
+                  alt="다이빙 1"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                />
+              </div>
+
+              {/* 우측 상단 2장 */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                <div style={{ borderRadius: '16px', overflow: 'hidden', height: '220px' }}>
                   <img
-                    src={`https://images.unsplash.com/photo-${1559827260 + i}?w=600&h=600&fit=crop`}
-                    alt={`갤러리 ${i}`}
-                    className={css({ width: '100%', height: '100%', objectFit: 'cover' })}
+                    src="/assets/main/fb5797dd599e9.jpg"
+                    alt="다이빙 2"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                   />
                 </div>
-              ))}
+                <div style={{ borderRadius: '16px', overflow: 'hidden', height: '220px' }}>
+                  <img
+                    src="/assets/main/8521cb2ab2e41.jpg"
+                    alt="다이빙 3"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </section>
+
 
         {/* Footer */}
         <footer className={css({ backgroundColor: '#111827', color: '#d1d5db', paddingY: '12' })}>

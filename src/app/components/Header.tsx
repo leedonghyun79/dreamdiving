@@ -7,7 +7,7 @@ import { css } from '../../../styled-system/css';
 
 const NAV_ITEMS = [
   {
-    label: '드림다이빙 소개',
+    label: '드림다이브 소개',
     href: '/about',
     sub: [
       { label: '업체 소개', href: '/about/company' },
