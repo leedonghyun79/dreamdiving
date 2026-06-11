@@ -15,7 +15,7 @@ const SLIDES = [
   },
   {
     main: 'BSAC 공인 스쿠버다이빙 자격증, 드림다이브와 함께',
-    sub: '처음부터 끝까지 검증된 BSAC 단계별 커리큘럼을 경험하세요',
+    sub: '처음부터 끝까지 검증된 BSAC 단계별 커리큘럼을 경험하세요.',
     btnText: '자격증 과정 알아보기',
     btnHref: '/programs',
   },
