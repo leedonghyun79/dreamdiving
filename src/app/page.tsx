@@ -21,6 +21,133 @@ const SLIDES = [
   },
 ];
 
+const PROGRAMS = [
+  { title: '오션 다이버', subtitle: 'Ocean Diver', href: '/programs/ocean', img: '/assets/main/49eab77bb0b32.jpg' },
+  { title: '오션 어드벤처 다이버', subtitle: 'Ocean Adventure Diver', href: '/programs/ocean-adventure', img: '/assets/main/fb5797dd599e9.jpg' },
+  { title: '어드밴스드 오션 다이버', subtitle: 'Advanced Ocean Diver', href: '/programs/advanced', img: '/assets/main/8521cb2ab2e41.jpg' },
+  { title: '스포츠 다이버', subtitle: 'Sports Diver', href: '/programs/sports', img: '/assets/main/1088f588f6785.jpg' },
+  { title: '다이버 리더', subtitle: 'Diver Leader', href: '/programs/leader', img: '/assets/main/16aaa59fbd5a9.jpg' },
+];
+
+function ProgramSection() {
+  const [current, setCurrent] = useState(0);
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+  const visible = 3;
+  const max = PROGRAMS.length - visible;
+
+  const prev = () => setCurrent((c) => Math.max(0, c - 1));
+  const next = () => setCurrent((c) => Math.min(max, c + 1));
+
+  return (
+    <section style={{ padding: '150px 0', backgroundColor: '#f8f9fb' }}>
+      <div style={{ maxWidth: '1520px', margin: '0 auto', padding: '0 50px' }}>
+        {/* 헤딩 */}
+        <div style={{ marginBottom: '60px' }}>
+          <div style={{
+            display: 'inline-flex', alignItems: 'center', gap: '8px',
+            backgroundColor: '#eaf4fb', color: '#267db6', fontSize: '13px', fontWeight: '700',
+            letterSpacing: '0.08em', padding: '6px 14px', borderRadius: '9999px',
+            marginBottom: '20px', textTransform: 'uppercase' as const,
+          }}>
+            <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#267db6', display: 'inline-block' }} />
+            Programs
+          </div>
+          <h2 style={{ fontSize: '40px', fontWeight: '900', color: '#1f1e1e', lineHeight: '1.2', wordBreak: 'keep-all' as const, marginBottom: '16px' }}>
+            <ScrollRevealText text="BSAC 공인 단계별 자격증 과정" charDelay={40} />
+          </h2>
+          <p style={{ fontSize: '17px', color: '#666', wordBreak: 'keep-all' as const }}>
+            <ScrollRevealText text="입문부터 강사과정까지, 수도권 최고의 다이빙 교육을 경험하세요." charDelay={25} />
+          </p>
+        </div>
+
+        {/* 슬라이더 */}
+        <div style={{ position: 'relative' }}>
+          <div style={{ overflow: 'hidden' }}>
+            <div style={{
+              display: 'flex', gap: '24px',
+              transition: 'transform 0.45s cubic-bezier(0.4, 0, 0.2, 1)',
+              transform: `translateX(calc(-${current} * (100% / ${visible} + 8px)))`,
+            }}>
+              {PROGRAMS.map((prog, i) => (
+                <div key={prog.title}
+                  style={{ flex: `0 0 calc((100% - ${(visible - 1) * 24}px) / ${visible})` }}
+                  onMouseEnter={() => setHoveredIdx(i)}
+                  onMouseLeave={() => setHoveredIdx(null)}
+                >
+                  {/* 이미지 카드 */}
+                  <div style={{
+                    borderRadius: '20px', overflow: 'hidden', position: 'relative',
+                    aspectRatio: '4/3', marginBottom: '16px', cursor: 'pointer',
+                    boxShadow: hoveredIdx === i ? '0 12px 40px rgba(0,0,0,0.15)' : '0 4px 16px rgba(0,0,0,0.08)',
+                    transition: 'box-shadow 0.3s, transform 0.3s',
+                    transform: hoveredIdx === i ? 'translateY(-4px)' : 'translateY(0)',
+                  }}>
+                    <img src={prog.img} alt={prog.title} style={{
+                      width: '100%', height: '100%', objectFit: 'cover', display: 'block',
+                      transition: 'transform 0.4s',
+                      transform: hoveredIdx === i ? 'scale(1.04)' : 'scale(1)',
+                    }} />
+                    <a href={prog.href} style={{
+                      position: 'absolute', bottom: '16px', right: '16px',
+                      width: '40px', height: '40px', borderRadius: '50%',
+                      backgroundColor: hoveredIdx === i ? '#267db6' : 'white',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      boxShadow: '0 2px 8px rgba(0,0,0,0.2)', transition: 'background-color 0.25s',
+                      textDecoration: 'none',
+                    }}>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke={hoveredIdx === i ? 'white' : '#267db6'}
+                        strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                      </svg>
+                    </a>
+                  </div>
+                  {/* 타이틀 */}
+                  <p style={{ fontSize: '11px', color: '#267db6', fontWeight: '600', letterSpacing: '0.06em', textTransform: 'uppercase' as const, marginBottom: '4px' }}>{prog.subtitle}</p>
+                  <p style={{ fontSize: '18px', fontWeight: '700', color: '#1f1e1e', wordBreak: 'keep-all' as const }}>{prog.title}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* 네비게이션 */}
+          <div style={{ display: 'flex', gap: '12px', marginTop: '40px', alignItems: 'center' }}>
+            <button onClick={prev} disabled={current === 0} style={{
+              width: '48px', height: '48px', borderRadius: '50%', border: '1.5px solid #ddd',
+              backgroundColor: current === 0 ? '#f5f5f5' : 'white',
+              cursor: current === 0 ? 'not-allowed' : 'pointer',
+              display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s',
+            }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={current === 0 ? '#ccc' : '#1f1e1e'} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button onClick={next} disabled={current === max} style={{
+              width: '48px', height: '48px', borderRadius: '50%', border: '1.5px solid #ddd',
+              backgroundColor: current === max ? '#f5f5f5' : 'white',
+              cursor: current === max ? 'not-allowed' : 'pointer',
+              display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s',
+            }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={current === max ? '#ccc' : '#1f1e1e'} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </button>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginLeft: '8px' }}>
+              {Array.from({ length: max + 1 }).map((_, i) => (
+                <button key={i} onClick={() => setCurrent(i)} style={{
+                  width: i === current ? '28px' : '8px', height: '8px', borderRadius: '9999px',
+                  border: 'none', backgroundColor: i === current ? '#267db6' : '#d1d5db',
+                  cursor: 'pointer', transition: 'all 0.3s', padding: 0,
+                }} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function HeroSection() {
   const [slideIdx, setSlideIdx] = useState(0);
   const [fade, setFade] = useState<'in' | 'out'>('in');
@@ -293,7 +420,12 @@ export default function Home() {
                 }}
               >
                 <ScrollRevealText
-                  text="믿을 수 있는 전문 강사진과 함께하는 다이빙, 1:1 맞춤 교육부터 강사 양성까지 체계적인 교육 과정을 제공합니다."
+                  text="믿을 수 있는 전문 강사진과 함께하는 다이빙, 1:1 맞춤 교육부터 강사 양성까지"
+                  charDelay={20}
+                />
+                <br />
+                <ScrollRevealText
+                  text="체계적인 교육 과정을 제공합니다."
                   charDelay={20}
                 />
               </p>
@@ -376,6 +508,10 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+
+        {/* Program Section */}
+        <ProgramSection />
 
 
         {/* Footer */}

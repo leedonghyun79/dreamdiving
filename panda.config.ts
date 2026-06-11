@@ -16,12 +16,6 @@ export default defineConfig({
   // Useful for theme customization
   theme: {
     extend: {
-      colors: {
-        point: '#267db6',
-        text: '#1f1e1e',
-        textSub: '#666666',
-        textLight: '#999999',
-      },
       tokens: {
         colors: {
           point: { value: '#267db6' },
