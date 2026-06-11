@@ -50,7 +50,7 @@ export default function ScrollRevealText({
           style={{
             display: 'inline-block',
             whiteSpace: char === ' ' ? 'pre' : 'normal',
-            opacity: triggered ? undefined : 0,
+            opacity: triggered ? 1 : 0,
             animation: triggered
               ? `charReveal 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards`
               : 'none',

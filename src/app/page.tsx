@@ -165,6 +165,14 @@ function HeroSection() {
     return () => clearInterval(interval);
   }, []);
 
+  // iframe onLoad가 크로스오리진에서 불안정한 경우를 위한 폴백 타이머
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setVideoLoaded(true);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
   const goTo = (i: number) => {
     if (i === slideIdx) return;
     setFade('out');
