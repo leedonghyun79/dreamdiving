@@ -22,11 +22,11 @@ const SLIDES = [
 ];
 
 const PROGRAMS = [
-  { title: '오션 다이버', subtitle: 'Ocean Diver', href: '/programs/ocean', img: '/assets/main/49eab77bb0b32.jpg' },
-  { title: '오션 어드벤처 다이버', subtitle: 'Ocean Adventure Diver', href: '/programs/ocean-adventure', img: '/assets/main/fb5797dd599e9.jpg' },
-  { title: '어드밴스드 오션 다이버', subtitle: 'Advanced Ocean Diver', href: '/programs/advanced', img: '/assets/main/8521cb2ab2e41.jpg' },
-  { title: '스포츠 다이버', subtitle: 'Sports Diver', href: '/programs/sports', img: '/assets/main/1088f588f6785.jpg' },
-  { title: '다이버 리더', subtitle: 'Diver Leader', href: '/programs/leader', img: '/assets/main/16aaa59fbd5a9.jpg' },
+  { title: '오션 다이버', subtitle: 'Ocean Diver', href: '/programs/ocean', img: '/assets/main/오션 다이버.jpg' },
+  { title: '오션 어드벤처 다이버', subtitle: 'Ocean Adventure Diver', href: '/programs/ocean-adventure', img: '/assets/main/오션 어드벤쳐 다이버.jpg' },
+  { title: '어드밴스드 오션 다이버', subtitle: 'Advanced Ocean Diver', href: '/programs/advanced', img: '/assets/main/어드밴스드 오션 다이버.jpg' },
+  { title: '스포츠 다이버', subtitle: 'Sports Diver', href: '/programs/sports', img: '/assets/main/스포츠 다이버.jpg' },
+  { title: '다이버 리더', subtitle: 'Diver Leader', href: '/programs/leader', img: '/assets/main/다이버 리더.jpg' },
 ];
 
 function ProgramSection() {
