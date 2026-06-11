@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "PowerShell(taskkill /PID 12656 /F)",
+      "Bash(npm install *)",
+      "Bash(npm uninstall *)",
+      "Bash(npx panda *)",
+      "PowerShell(taskkill /PID 29436 /F)",
+      "PowerShell(Get-NetTCPConnection -LocalPort 3000 -ErrorAction SilentlyContinue)",
+      "PowerShell(Stop-Process -Force -ErrorAction SilentlyContinue)"
+    ]
+  }
+}
