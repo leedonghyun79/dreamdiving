@@ -148,6 +148,159 @@ function ProgramSection() {
   );
 }
 
+const REVIEWS = [
+  {
+    headline: '"처음인데도 하나도 안 무서웠어요"',
+    body: '체험다이빙 처음 해봤는데 강사님이 처음부터 끝까지 정말 친절하게 설명해 주셨어요. 물속에 들어가기 전에 충분히 연습도 시켜주시고, 덕분에 긴장이 풀렸어요. 수중 세계가 이렇게 아름다운 줄 몰랐는데 정말 잊지 못할 경험이었습니다!',
+    name: '김민지',
+    program: '체험다이빙',
+  },
+  {
+    headline: '"1:1 수업처럼 꼼꼼하게 봐주셨어요"',
+    body: 'BSAC 오션 다이버 과정을 수료했어요. 강사님이 수강생 한 명 한 명 개인 수준에 맞게 가르쳐 주셔서 부담 없이 따라갈 수 있었습니다. K26 풀장 시설도 정말 잘 되어 있고, 강릉 해양 실습까지 경험이 알차게 구성되어 있어요.',
+    name: '박준혁',
+    program: '오션 다이버',
+  },
+  {
+    headline: '"자격증 딸 수 있을까 걱정했는데 합격했어요"',
+    body: '수영도 못하는 편이라 걱정이 많았는데, 강사님이 기초부터 차근차근 알려주시고 카카오톡으로도 궁금한 점 바로바로 답해주셔서 든든했어요. 어드밴스드 오션 다이버 자격증을 취득하고 나니 뿌듯함이 엄청납니다!',
+    name: '이서연',
+    program: '어드밴스드 오션 다이버',
+  },
+  {
+    headline: '"타 지역에서 왔는데도 전혀 불편하지 않았어요"',
+    body: '서울에서 올라왔는데 강사님이 숙소 정보부터 일정까지 세심하게 안내해 주셨어요. 강릉 해양 실습 포인트도 정말 좋았고, 시야도 맑아서 너무 만족스러웠습니다. 다음에 스포츠 다이버 과정도 꼭 여기서 하고 싶어요.',
+    name: '최동훈',
+    program: '오션 어드벤처 다이버',
+  },
+  {
+    headline: '"아이와 함께 온 체험이 최고의 추억이 됐어요"',
+    body: '초등학생 아이와 함께 가족 체험다이빙을 했어요. 아이가 물을 무서워했는데 강사님이 정말 인내심 있게 달래주시고 이끌어 주셔서 결국 바닷속을 헤엄치더라고요. 아이가 지금도 또 가고 싶다고 졸라요. 감사합니다!',
+    name: '정유진',
+    program: '체험다이빙',
+  },
+  {
+    headline: '"디스커버리 과정이 생각보다 훨씬 체계적이에요"',
+    body: '짧은 과정이라 가볍게 생각했는데, 이론부터 실기까지 커리큘럼이 너무 체계적으로 잘 짜여 있어 놀랐어요. 강사님도 BSAC 공인 강사님이시라 믿음이 갔고, 수료 후 바로 다음 과정 등록했습니다. 강력 추천해요!',
+    name: '오승환',
+    program: '디스커버리 다이버',
+  },
+];
+
+function StarRating() {
+  return (
+    <div style={{ display: 'flex', gap: '3px', justifyContent: 'center', marginBottom: '16px' }}>
+      {[1,2,3,4,5].map((s) => (
+        <svg key={s} width="18" height="18" viewBox="0 0 24 24" fill="#f59e0b">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+        </svg>
+      ))}
+    </div>
+  );
+}
+
+function ReviewSection() {
+  return (
+    <section style={{ padding: '150px 0', backgroundColor: '#f8f9fb' }}>
+      <div style={{ maxWidth: '1520px', margin: '0 auto', padding: '0 50px' }}>
+        {/* 헤딩 */}
+        <div style={{ textAlign: 'center', marginBottom: '72px' }}>
+          <div style={{
+            display: 'inline-flex', alignItems: 'center', gap: '8px',
+            backgroundColor: '#eaf4fb', color: '#267db6', fontSize: '13px', fontWeight: '700',
+            letterSpacing: '0.08em', padding: '6px 14px', borderRadius: '9999px',
+            marginBottom: '20px', textTransform: 'uppercase' as const,
+          }}>
+            <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#267db6', display: 'inline-block' }} />
+            Reviews
+          </div>
+          <h2 style={{ fontSize: '40px', fontWeight: '900', color: '#1f1e1e', lineHeight: '1.2', marginBottom: '16px' }}>
+            <ScrollRevealText text="수강생들의 생생한 후기" charDelay={40} />
+          </h2>
+          <p style={{ fontSize: '17px', color: '#666' }}>
+            <ScrollRevealText text="드림다이브를 경험한 분들의 솔직한 이야기를 확인해보세요." charDelay={20} />
+          </p>
+        </div>
+
+        {/* 리뷰 카드 그리드 */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          gap: '28px',
+        }}>
+          {REVIEWS.map((review, i) => (
+            <div key={i} style={{
+              backgroundColor: 'white',
+              borderRadius: '20px',
+              padding: '36px 32px',
+              boxShadow: '0 4px 24px rgba(0,0,0,0.06)',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '0',
+            }}>
+              {/* VERIFIED REVIEW 뱃지 */}
+              <div style={{
+                textAlign: 'center',
+                fontSize: '11px',
+                fontWeight: '700',
+                letterSpacing: '0.12em',
+                color: '#999',
+                marginBottom: '14px',
+              }}>
+                VERIFIED REVIEW
+              </div>
+
+              {/* 별점 */}
+              <StarRating />
+
+              {/* 헤드라인 */}
+              <p style={{
+                fontSize: '20px',
+                fontWeight: '800',
+                color: '#267db6',
+                textAlign: 'center',
+                lineHeight: '1.4',
+                marginBottom: '20px',
+                wordBreak: 'keep-all' as const,
+              }}>
+                {review.headline}
+              </p>
+
+              {/* 본문 */}
+              <p style={{
+                fontSize: '15px',
+                color: '#555',
+                lineHeight: '1.85',
+                wordBreak: 'keep-all' as const,
+                flexGrow: 1,
+                textAlign: 'center',
+              }}>
+                {review.body}
+              </p>
+
+              {/* 구분선 */}
+              <div style={{ borderTop: '1px solid #f0f0f0', marginTop: '24px', paddingTop: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
+                <div style={{
+                  width: '36px', height: '36px', borderRadius: '50%',
+                  backgroundColor: '#eaf4fb',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontSize: '14px', fontWeight: '700', color: '#267db6',
+                }}>
+                  {review.name[0]}
+                </div>
+                <div>
+                  <p style={{ fontSize: '14px', fontWeight: '700', color: '#1f1e1e', margin: 0 }}>{review.name}</p>
+                  <p style={{ fontSize: '12px', color: '#999', margin: 0 }}>{review.program}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function HeroSection() {
   const [slideIdx, setSlideIdx] = useState(0);
   const [fade, setFade] = useState<'in' | 'out'>('in');
@@ -520,6 +673,9 @@ export default function Home() {
 
         {/* Program Section */}
         <ProgramSection />
+
+        {/* Review Section */}
+        <ReviewSection />
 
 
         {/* Footer */}
