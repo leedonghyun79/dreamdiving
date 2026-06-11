@@ -9,7 +9,7 @@ import ScrollRevealText from './components/ScrollRevealText';
 const SLIDES = [
   {
     main: '바닷속을 제대로 즐기는 첫걸음',
-    sub: '처음이라 걱정되셔도 괜찮아요, 10년 이상 강사진이 함께합니다',
+    sub: '처음이라 걱정되셔도 괜찮습니다. 10년 이상 경력의 강사진이 함께합니다.',
     btnText: '체험 다이빙 신청하기',
     btnHref: '/programs/experience',
   },
