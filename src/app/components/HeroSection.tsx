@@ -7,15 +7,12 @@ import { SLIDES } from '../constants/data';
 
 export function HeroSection() {
   const [slideIdx, setSlideIdx] = useState(0);
-  const [fade, setFade] = useState<'in' | 'out'>('in');
   const [videoLoaded, setVideoLoaded] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setFade('out');
       setTimeout(() => {
         setSlideIdx((prev) => (prev + 1) % SLIDES.length);
-        setFade('in');
       }, 500);
     }, 5000);
     return () => clearInterval(interval);
@@ -30,10 +27,8 @@ export function HeroSection() {
 
   const goTo = (i: number) => {
     if (i === slideIdx) return;
-    setFade('out');
     setTimeout(() => {
       setSlideIdx(i);
-      setFade('in');
     }, 500);
   };
 
