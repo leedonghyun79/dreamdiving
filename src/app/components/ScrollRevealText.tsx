@@ -28,7 +28,7 @@ export default function ScrollRevealText({
       ([entry]) => {
         if (entry.isIntersecting) {
           setTriggered(true);
-          observer.disconnect(); // 스크롤 올려도 재실행 안 됨
+          observer.disconnect();
         }
       },
       { threshold: 0.2 }
@@ -45,19 +45,29 @@ export default function ScrollRevealText({
       style={{ ...style, display: 'inline' }}
     >
       {text.split('').map((char, i) => (
+        // 바깥 span: overflow hidden → 마스크 역할 (아래 공간 클리핑)
         <span
           key={i}
           style={{
             display: 'inline-block',
-            whiteSpace: char === ' ' ? 'pre' : 'normal',
-            opacity: triggered ? 1 : 0,
-            animation: triggered
-              ? `charReveal 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards`
-              : 'none',
-            animationDelay: triggered ? `${i * charDelay}ms` : '0ms',
+            overflow: 'hidden',
+            verticalAlign: 'bottom',
+            lineHeight: 'inherit',
           }}
         >
-          {char === ' ' ? '\u00A0' : char}
+          {/* 안쪽 span: 아래서 위로 슬라이드 */}
+          <span
+            style={{
+              display: 'inline-block',
+              whiteSpace: char === ' ' ? 'pre' : 'normal',
+              transform: triggered ? 'translateY(0)' : 'translateY(110%)',
+              transition: triggered
+                ? `transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) ${i * charDelay}ms`
+                : 'none',
+            }}
+          >
+            {char === ' ' ? '\u00A0' : char}
+          </span>
         </span>
       ))}
     </Tag>

@@ -55,3 +55,18 @@ body {
     transform: translateY(0);
   }
 }
+
+@keyframes galleryScrollUp {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-50%); }
+}
+
+@keyframes galleryScrollDown {
+  from { transform: translateY(-50%); }
+  to   { transform: translateY(0); }
+}
+
+@keyframes logoScrollLeft {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
