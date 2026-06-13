@@ -30,4 +30,11 @@ export interface GalleryImage {
   alt?: string;
 }
 
+export interface InstructorCard {
+  name: string;
+  title: string;
+  description: string;
+  img: string;
+}
+
 export type ModalType = 'terms' | 'privacy' | null;

@@ -4,6 +4,7 @@ import { css } from '../../styled-system/css';
 import { HeroSection } from './components/HeroSection';
 import { AboutSection } from './components/AboutSection';
 import { PartnerSection } from './components/PartnerSection';
+import { EducationFeatureSection } from './components/EducationFeatureSection';
 import { ProgramSection } from './components/ProgramSection';
 import { ReviewSection } from './components/ReviewSection';
 import { GallerySection } from './components/GallerySection';
@@ -21,6 +22,7 @@ export default function Home() {
         <HeroSection />
         <AboutSection />
         <PartnerSection />
+        <EducationFeatureSection />
         <ProgramSection />
         <ReviewSection />
         <GallerySection />

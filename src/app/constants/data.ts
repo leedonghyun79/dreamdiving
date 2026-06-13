@@ -1,5 +1,5 @@
 // src/app/constants/data.ts
-import { SlideData, ProgramCard, ReviewCard, PartnerLogo } from '../types';
+import { SlideData, ProgramCard, ReviewCard, PartnerLogo, InstructorCard } from '../types';
 
 export const SLIDES: SlideData[] = [
   {
@@ -43,6 +43,27 @@ export const PARTNER_LOGOS: PartnerLogo[] = [
   { src: '/assets/main/juno hair.png', alt: 'Juno Hair' },
   { src: '/assets/main/roral body.png', alt: 'Royal Body' },
   { src: '/assets/main/profit 프로핏.png', alt: 'Profit 프로핏' },
+];
+
+export const INSTRUCTORS: InstructorCard[] = [
+  {
+    name: '이태식',
+    title: '대표 강사',
+    description: '10년 이상의 다이빙 경력으로 체계적이고 안전한 교육을 제공합니다.',
+    img: '/assets/main/49eab77bb0b32.jpg',
+  },
+  {
+    name: '류재은',
+    title: '강사',
+    description: 'BSAC 공인 강사로서 친절하고 상세한 교육 방식이 특징입니다.',
+    img: '/assets/main/fb5797dd599e9.jpg',
+  },
+  {
+    name: '이용희',
+    title: '원장',
+    description: '드림다이브의 방향성을 이끌며 최고 수준의 교육 환경을 제공합니다.',
+    img: '/assets/main/1088f588f6785.jpg',
+  },
 ];
 
 export const REVIEWS: ReviewCard[] = [

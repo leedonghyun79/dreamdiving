@@ -8,7 +8,15 @@
       "Bash(npx panda *)",
       "PowerShell(taskkill /PID 29436 /F)",
       "PowerShell(Get-NetTCPConnection -LocalPort 3000 -ErrorAction SilentlyContinue)",
-      "PowerShell(Stop-Process -Force -ErrorAction SilentlyContinue)"
+      "PowerShell(Stop-Process -Force -ErrorAction SilentlyContinue)",
+      "Skill(run)",
+      "Skill(run:*)",
+      "Bash(curl -s http://localhost:3000)",
+      "PowerShell(Start-Process \"http://localhost:3000\")",
+      "PowerShell(taskkill /PID 18584 /F)",
+      "Bash(curl -s http://localhost:3000/about/instructors)",
+      "PowerShell(Get-NetTCPConnection -LocalPort 3000 -ErrorAction SilentlyContinue | Select-Object -ExpandProperty OwningProcess | ForEach-Object { taskkill /PID $_ /F })",
+      "Bash(git add *)"
     ]
   }
 }
