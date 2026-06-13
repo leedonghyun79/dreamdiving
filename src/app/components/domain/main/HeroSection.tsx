@@ -2,8 +2,8 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { css } from '../../../styled-system/css';
-import { SLIDES } from '../constants/data';
+import { css } from '../../../../../styled-system/css';
+import { SLIDES } from '../../../constants/data';
 
 export function HeroSection() {
   const [slideIdx, setSlideIdx] = useState(0);
@@ -27,9 +27,7 @@ export function HeroSection() {
 
   const goTo = (i: number) => {
     if (i === slideIdx) return;
-    setTimeout(() => {
-      setSlideIdx(i);
-    }, 500);
+    setSlideIdx(i);
   };
 
   const slide = SLIDES[slideIdx];
@@ -165,11 +163,11 @@ export function HeroSection() {
       <div
         className={css({
           position: 'absolute',
-          bottom: '32px',
+          bottom: '50px',
           left: '50%',
           zIndex: 10,
           display: 'flex',
-          gap: '10px',
+          gap: '12px',
         })}
         style={{ transform: 'translateX(-50%)' }}
       >
@@ -178,8 +176,8 @@ export function HeroSection() {
             key={i}
             onClick={() => goTo(i)}
             className={css({
-              width: i === slideIdx ? '28px' : '10px',
-              height: '10px',
+              width: i === slideIdx ? '40px' : '14px',
+              height: '14px',
               borderRadius: '9999px',
               border: 'none',
               cursor: 'pointer',
@@ -192,3 +190,4 @@ export function HeroSection() {
     </section>
   );
 }
+

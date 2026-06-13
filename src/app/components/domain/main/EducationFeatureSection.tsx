@@ -1,7 +1,7 @@
 'use client';
 
-import ScrollRevealText from './ScrollRevealText';
-import { COLOR } from '../constants/styles';
+import ScrollRevealText from '../../common/ScrollRevealText';
+import { COLOR } from '../../../constants/styles';
 
 const FEATURE_IMAGES = [
   { src: '/assets/main/49eab77bb0b32.jpg', alt: '체계적인 교육' },
@@ -63,7 +63,7 @@ export function EducationFeatureSection() {
             }}
           >
             <ScrollRevealText
-              text="드림다이브는 수도권 최고의 스쿠버 교육 전형을 운영하며 오픈워터 입문 부터 스쿠버 강사교육 다니크널 다이빙 강사 교육을 전형하는 전문 다이빙스쿨입니다."
+              text="드림다이브는 수도권 최고의 스쿠버 교육 전형을 운영하며 오픈워터 입문부터 스쿠버 강사교육까지 다이빙 강사 교육을 전형하는 전문 다이빙스쿨입니다."
               charDelay={15}
             />
           </p>
@@ -78,7 +78,7 @@ export function EducationFeatureSection() {
             }}
           >
             <ScrollRevealText
-              text="K26 다이빙 풀장과 서울 올림픽 수영장을 교육 장소"
+              text="K26 다이빙 풀장과 서울 올림픽 수영장을 교육 장소로 활용합니다."
               charDelay={15}
             />
           </p>

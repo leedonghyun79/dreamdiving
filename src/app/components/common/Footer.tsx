@@ -1,6 +1,6 @@
 'use client';
 
-import { ModalType } from '../types';
+import { ModalType } from '../../types';
 
 interface FooterProps {
   onOpenModal: (modal: ModalType) => void;
@@ -14,7 +14,7 @@ export function Footer({ onOpenModal }: FooterProps) {
         {/* 회사 정보 */}
         <div style={{ marginBottom: '24px' }}>
           <p style={{ fontSize: '14px', lineHeight: '2', color: '#8b9bb4' }}>
-            업체명: 드림다이브 &nbsp;|&nbsp; 센터장: 이용희
+            업체명: 드림다이브&nbsp;|&nbsp; 센터장: 이용희
           </p>
           <p style={{ fontSize: '14px', lineHeight: '2', color: '#8b9bb4' }}>
             교육 &amp; 다이빙 문의: 010-2786-4468

@@ -16,7 +16,9 @@
       "PowerShell(taskkill /PID 18584 /F)",
       "Bash(curl -s http://localhost:3000/about/instructors)",
       "PowerShell(Get-NetTCPConnection -LocalPort 3000 -ErrorAction SilentlyContinue | Select-Object -ExpandProperty OwningProcess | ForEach-Object { taskkill /PID $_ /F })",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(curl -s http://localhost:3000/bsac/features)",
+      "Bash(git checkout *)"
     ]
   }
 }

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useRef, useState } from 'react';
 
@@ -45,7 +45,7 @@ export default function ScrollRevealText({
       style={{ ...style, display: 'inline' }}
     >
       {text.split('').map((char, i) => (
-        // 바깥 span: overflow hidden → 마스크 역할 (아래 공간 클리핑)
+        // 諛붽묑 span: overflow hidden ??留덉뒪????븷 (?꾨옒 怨듦컙 ?대━??
         <span
           key={i}
           style={{
@@ -55,7 +55,7 @@ export default function ScrollRevealText({
             lineHeight: 'inherit',
           }}
         >
-          {/* 안쪽 span: 아래서 위로 슬라이드 */}
+          {/* ?덉そ span: ?꾨옒???꾨줈 ?щ씪?대뱶 */}
           <span
             style={{
               display: 'inline-block',

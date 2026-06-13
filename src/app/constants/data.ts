@@ -17,21 +17,21 @@ export const SLIDES: SlideData[] = [
 ];
 
 export const PROGRAMS: ProgramCard[] = [
-  { title: '오션 다이버', subtitle: 'Ocean Diver', href: '/programs/ocean', img: '/assets/main/오션 다이버.jpg' },
-  { title: '오션 어드벤쳐 다이버', subtitle: 'Ocean Adventure Diver', href: '/programs/ocean-adventure', img: '/assets/main/오션 어드벤쳐 다이버.jpg' },
-  { title: '어드밴스드 오션 다이버', subtitle: 'Advanced Ocean Diver', href: '/programs/advanced', img: '/assets/main/어드밴스드 오션 다이버.jpg' },
-  { title: '스포츠 다이버', subtitle: 'Sports Diver', href: '/programs/sports', img: '/assets/main/스포츠 다이버.jpg' },
-  { title: '다이버 리더', subtitle: 'Diver Leader', href: '/programs/leader', img: '/assets/main/다이버 리더.jpg' },
+  { title: '오션 다이버', subtitle: 'Ocean Diver', href: '/programs/ocean', img: encodeURI('/assets/main/오션 다이버.jpg') },
+  { title: '오션 어드벤쳐 다이버', subtitle: 'Ocean Adventure Diver', href: '/programs/ocean-adventure', img: encodeURI('/assets/main/오션 어드벤쳐 다이버.jpg') },
+  { title: '어드밴스드 오션 다이버', subtitle: 'Advanced Ocean Diver', href: '/programs/advanced', img: encodeURI('/assets/main/어드밴스드 오션 다이버.jpg') },
+  { title: '스포츠 다이버', subtitle: 'Sports Diver', href: '/programs/sports', img: encodeURI('/assets/main/스포츠 다이버.jpg') },
+  { title: '다이버 리더', subtitle: 'Diver Leader', href: '/programs/leader', img: encodeURI('/assets/main/다이버 리더.jpg') },
 ];
 
 export const GALLERY_IMAGES = [
   '/assets/main/49eab77bb0b32.jpg',
-  '/assets/main/오션 다이버.jpg',
-  '/assets/main/스포츠 다이버.jpg',
-  '/assets/main/어드밴스드 오션 다이버.jpg',
+  encodeURI('/assets/main/오션 다이버.jpg'),
+  encodeURI('/assets/main/스포츠 다이버.jpg'),
+  encodeURI('/assets/main/어드밴스드 오션 다이버.jpg'),
   '/assets/main/fb5797dd599e9.jpg',
-  '/assets/main/다이버 리더.jpg',
-  '/assets/main/오션 어드벤쳐 다이버.jpg',
+  encodeURI('/assets/main/다이버 리더.jpg'),
+  encodeURI('/assets/main/오션 어드벤쳐 다이버.jpg'),
   '/assets/main/1088f588f6785.jpg',
   '/assets/main/16aaa59fbd5a9.jpg',
   '/assets/main/8521cb2ab2e41.jpg',
@@ -42,7 +42,7 @@ export const PARTNER_LOGOS: PartnerLogo[] = [
   { src: '/assets/main/nllgrobal.png', alt: 'NL Global' },
   { src: '/assets/main/juno hair.png', alt: 'Juno Hair' },
   { src: '/assets/main/roral body.png', alt: 'Royal Body' },
-  { src: '/assets/main/profit 프로핏.png', alt: 'Profit 프로핏' },
+  { src: encodeURI('/assets/main/profit 프로핏.png'), alt: 'Profit 프로핏' },
 ];
 
 export const INSTRUCTORS: InstructorCard[] = [

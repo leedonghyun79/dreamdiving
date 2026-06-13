@@ -1,8 +1,8 @@
 'use client';
 
-import ScrollRevealText from './ScrollRevealText';
-import { GALLERY_IMAGES } from '../constants/data';
-import { COMMON_STYLES, COLOR } from '../constants/styles';
+import ScrollRevealText from '../../common/ScrollRevealText';
+import { GALLERY_IMAGES } from '../../../constants/data';
+import { COMMON_STYLES, COLOR } from '../../../constants/styles';
 
 const COL1 = [...GALLERY_IMAGES.filter((_, i) => i % 2 === 0), ...GALLERY_IMAGES.filter((_, i) => i % 2 === 0)];
 const COL2 = [...GALLERY_IMAGES.filter((_, i) => i % 2 === 1), ...GALLERY_IMAGES.filter((_, i) => i % 2 === 1)];

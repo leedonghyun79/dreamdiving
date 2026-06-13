@@ -1,13 +1,13 @@
 'use client';
 
-import ScrollRevealText from './ScrollRevealText';
-import { COLOR } from '../constants/styles';
+import ScrollRevealText from '../../common/ScrollRevealText';
+import { COMMON_STYLES, COLOR } from '../../../constants/styles';
 
 export function AboutSection() {
   return (
     <section
       style={{
-        padding: '80px 0 100px',
+        padding: '100px 0',
         backgroundColor: '#fff',
       }}
     >
@@ -23,68 +23,78 @@ export function AboutSection() {
         }}
       >
         <div>
-          <h1
+          <div style={COMMON_STYLES.badge}>
+            <span style={COMMON_STYLES.badgeDot} />
+            Expert Instructor
+          </div>
+
+          <h2
             style={{
-              fontSize: '56px',
+              fontSize: '44px',
               fontWeight: '900',
               lineHeight: '1.2',
-              marginBottom: '32px',
-              wordBreak: 'keep-all',
-              color: COLOR.primary,
-            }}
-          >
-            <ScrollRevealText text="DREAM DIVE" charDelay={60} />
-          </h1>
-
-          <p
-            style={{
-              fontSize: '18px',
-              color: COLOR.textSecondary,
-              lineHeight: '1.9',
               marginBottom: '24px',
               wordBreak: 'keep-all',
-              fontWeight: '700',
             }}
           >
-            <ScrollRevealText
-              text="수도권 최고의 스쿠버다이빙 교육센터 드림다이빙입니다."
-              charDelay={20}
-            />
-          </p>
+            <span style={{ color: COLOR.primary }}>
+              <ScrollRevealText text="최고의 강사진과 함께하는" charDelay={45} />
+            </span>
+            <br />
+            <span style={{ color: COLOR.text }}>
+              <ScrollRevealText text="드림다이브 다이빙 여정." charDelay={45} />
+            </span>
+          </h2>
 
           <p
             style={{
               fontSize: '17px',
               color: COLOR.textSecondary,
               lineHeight: '1.85',
-              marginBottom: '32px',
+              marginBottom: '40px',
               wordBreak: 'keep-all',
             }}
           >
             <ScrollRevealText
-              text="체계적이고 전문화된 강사진들의 안전하고 즐거운 교육,"
-              charDelay={18}
+              text="믿을 수 있는 전문 강사진과 함께하는 다이빙, 1:1 맞춤 교육부터 강사 자격취득까지"
+              charDelay={20}
             />
             <br />
             <ScrollRevealText
-              text="드림다이브와 함께하세요."
-              charDelay={18}
+              text="체계적인 교육 과정을 제공합니다."
+              charDelay={20}
             />
           </p>
 
-          <p
+          <a
+            href="/about"
             style={{
-              fontSize: '16px',
-              color: COLOR.textSecondary,
-              lineHeight: '1.8',
-              wordBreak: 'keep-all',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '14px 28px',
+              border: `2px solid ${COLOR.primary}`,
+              borderRadius: '8px',
+              color: COLOR.primary,
+              fontSize: '15px',
+              fontWeight: '700',
+              textDecoration: 'none',
+              transition: 'all 0.2s',
+            }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLAnchorElement).style.backgroundColor = COLOR.primary;
+              (e.currentTarget as HTMLAnchorElement).style.color = 'white';
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'transparent';
+              (e.currentTarget as HTMLAnchorElement).style.color = COLOR.primary;
             }}
           >
-            <ScrollRevealText
-              text="교육전형은 프리이빗 1:1 교육 및 2:1교육과 클래스 두가지로 전문 강사진의 업격한 관리에 전향합니다."
-              charDelay={15}
-            />
-          </p>
+            드림다이브 소개
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
         </div>
 
         <div
@@ -106,7 +116,7 @@ export function AboutSection() {
           >
             <img
               src="/assets/main/49eab77bb0b32.jpg"
-              alt="드림다이브"
+              alt="다이빙 1"
               style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />
           </div>
@@ -115,14 +125,14 @@ export function AboutSection() {
             <div style={{ borderRadius: '16px', overflow: 'hidden', height: '220px' }}>
               <img
                 src="/assets/main/fb5797dd599e9.jpg"
-                alt="다이빙 교육"
+                alt="다이빙 2"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
               />
             </div>
             <div style={{ borderRadius: '16px', overflow: 'hidden', height: '220px' }}>
               <img
                 src="/assets/main/8521cb2ab2e41.jpg"
-                alt="다이빙 활동"
+                alt="다이빙 3"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
               />
             </div>

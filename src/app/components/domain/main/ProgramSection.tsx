@@ -1,9 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import ScrollRevealText from './ScrollRevealText';
-import { PROGRAMS } from '../constants/data';
-import { COMMON_STYLES, COLOR } from '../constants/styles';
+import ScrollRevealText from '../../common/ScrollRevealText';
+import { PROGRAMS } from '../../../constants/data';
+import { COMMON_STYLES, COLOR } from '../../../constants/styles';
 
 export function ProgramSection() {
   const [current, setCurrent] = useState(0);

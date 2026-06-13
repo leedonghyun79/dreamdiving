@@ -1,16 +1,16 @@
 'use client';
 
 import { css } from '../../styled-system/css';
-import { HeroSection } from './components/HeroSection';
-import { AboutSection } from './components/AboutSection';
-import { PartnerSection } from './components/PartnerSection';
-import { EducationFeatureSection } from './components/EducationFeatureSection';
-import { ProgramSection } from './components/ProgramSection';
-import { ReviewSection } from './components/ReviewSection';
-import { GallerySection } from './components/GallerySection';
-import { Footer } from './components/Footer';
-import { TermsModal } from './components/modals/TermsModal';
-import { PrivacyModal } from './components/modals/PrivacyModal';
+import { HeroSection } from './components/domain/main/HeroSection';
+import { MainAboutSection } from './components/domain/main/MainAboutSection';
+import { PartnerSection } from './components/domain/main/PartnerSection';
+
+import { ProgramSection } from './components/domain/main/ProgramSection';
+import { ReviewSection } from './components/domain/main/ReviewSection';
+import { GallerySection } from './components/domain/main/GallerySection';
+import { Footer } from './components/common/Footer';
+import { TermsModal } from './components/common/modals/TermsModal';
+import { PrivacyModal } from './components/common/modals/PrivacyModal';
 import { useModalState } from './lib/modalState';
 
 export default function Home() {
@@ -20,9 +20,9 @@ export default function Home() {
     <div className={css({ width: '100%' })}>
       <main>
         <HeroSection />
-        <AboutSection />
+        <MainAboutSection />
         <PartnerSection />
-        <EducationFeatureSection />
+
         <ProgramSection />
         <ReviewSection />
         <GallerySection />
