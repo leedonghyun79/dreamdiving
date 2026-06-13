@@ -7,14 +7,14 @@ import { COMMON_STYLES, COLOR } from '../../../constants/styles';
 const COL1 = [...GALLERY_IMAGES.filter((_, i) => i % 2 === 0), ...GALLERY_IMAGES.filter((_, i) => i % 2 === 0)];
 const COL2 = [...GALLERY_IMAGES.filter((_, i) => i % 2 === 1), ...GALLERY_IMAGES.filter((_, i) => i % 2 === 1)];
 
-export function GallerySection() {
+export function CtaSection() {
   return (
     <section style={{ padding: '100px 0', backgroundColor: '#fff', overflow: 'hidden' }}>
       <div style={{ maxWidth: '1520px', margin: '0 auto', padding: '0 50px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center' }}>
         <div>
           <div style={COMMON_STYLES.badge}>
-            <span style={COMMON_STYLES.badgeDot} />
-            Gallery
+
+            Consultation
           </div>
 
           <h2
@@ -47,7 +47,7 @@ export function GallerySection() {
               alignItems: 'center',
               gap: '8px',
               padding: '16px 32px',
-              border: `2px solid ${COLOR.primary}`,
+              border: `1px solid ${COLOR.primary}`,
               borderRadius: '8px',
               color: COLOR.primary,
               fontSize: '16px',

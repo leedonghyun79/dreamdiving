@@ -19,7 +19,7 @@ export function ProgramSection() {
       <div style={{ maxWidth: '1520px', margin: '0 auto', padding: '0 50px' }}>
         <div style={{ marginBottom: '60px' }}>
           <div style={COMMON_STYLES.badge}>
-            <span style={COMMON_STYLES.badgeDot} />
+
             Programs
           </div>
           <h2 style={COMMON_STYLES.heading2}>

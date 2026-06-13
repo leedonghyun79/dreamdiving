@@ -20,6 +20,7 @@ export default function RootLayout({
   return (
     <html lang="ko" style={{ height: "100%" }}>
       <body
+        suppressHydrationWarning
         className={css({
           minHeight: "100%",
           display: "flex",

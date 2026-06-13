@@ -24,7 +24,7 @@ export function MainAboutSection() {
       >
         <div>
           <div style={COMMON_STYLES.badge}>
-            <span style={COMMON_STYLES.badgeDot} />
+
             Expert Instructor
           </div>
 
@@ -73,7 +73,7 @@ export function MainAboutSection() {
               alignItems: 'center',
               gap: '8px',
               padding: '14px 28px',
-              border: `2px solid ${COLOR.primary}`,
+              border: `1px solid ${COLOR.primary}`,
               borderRadius: '8px',
               color: COLOR.primary,
               fontSize: '15px',

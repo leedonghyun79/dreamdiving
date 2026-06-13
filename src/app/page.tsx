@@ -7,7 +7,7 @@ import { PartnerSection } from './components/domain/main/PartnerSection';
 
 import { ProgramSection } from './components/domain/main/ProgramSection';
 import { ReviewSection } from './components/domain/main/ReviewSection';
-import { GallerySection } from './components/domain/main/GallerySection';
+import { CtaSection } from './components/domain/main/CtaSection';
 import { Footer } from './components/common/Footer';
 import { TermsModal } from './components/common/modals/TermsModal';
 import { PrivacyModal } from './components/common/modals/PrivacyModal';
@@ -25,7 +25,7 @@ export default function Home() {
 
         <ProgramSection />
         <ReviewSection />
-        <GallerySection />
+        <CtaSection />
         <Footer onOpenModal={openModal} />
 
         <TermsModal isOpen={modalOpen === 'terms'} onClose={closeModal} />

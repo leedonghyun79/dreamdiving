@@ -15,14 +15,7 @@ export const COMMON_STYLES = {
     marginBottom: '28px',
     textTransform: 'uppercase' as const,
   },
-  // 배지 내 점
-  badgeDot: {
-    width: '6px',
-    height: '6px',
-    borderRadius: '50%',
-    backgroundColor: '#267db6',
-    display: 'inline-block',
-  },
+
   // 섹션 패딩
   sectionPadding: {
     padding: '100px 0',
@@ -54,7 +47,7 @@ export const COMMON_STYLES = {
     alignItems: 'center',
     gap: '8px',
     padding: '14px 28px',
-    border: '2px solid #267db6',
+    border: '1px solid #267db6',
     borderRadius: '8px',
     color: '#267db6',
     fontSize: '15px',

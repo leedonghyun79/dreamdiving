@@ -22,7 +22,7 @@ export function ReviewSection() {
       <div style={{ maxWidth: '1520px', margin: '0 auto', padding: '0 50px' }}>
         <div style={{ textAlign: 'center', marginBottom: '72px' }}>
           <div style={COMMON_STYLES.badge}>
-            <span style={COMMON_STYLES.badgeDot} />
+
             Reviews
           </div>
           <h2 style={{ ...COMMON_STYLES.heading2, marginBottom: '16px' }}>

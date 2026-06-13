@@ -38,3 +38,17 @@ export interface InstructorCard {
 }
 
 export type ModalType = 'terms' | 'privacy' | null;
+
+export interface ProgramDetail {
+  id: string;
+  nameEn: string;
+  nameKo: string;
+  description: string;
+  courseTitle: string;
+  courseDescriptions: string[];
+  courseImage?: string;
+  details: {
+    label: string;
+    value: string;
+  }[];
+}
