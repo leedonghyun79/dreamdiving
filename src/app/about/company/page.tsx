@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { AboutSection } from '@/app/components/domain/about/AboutSection';
 

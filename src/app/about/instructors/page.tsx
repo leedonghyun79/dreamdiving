@@ -9,28 +9,7 @@ export default function InstructorsPage() {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
 
   return (
-    <main style={{ paddingTop: '80px', minHeight: '100vh' }}>
-      {/* 헤더 배너 */}
-      <section
-        className={css({
-          width: '100%',
-          height: { base: '250px', md: '320px' },
-          backgroundImage: 'url(/assets/main/49eab77bb0b32.jpg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          position: 'relative',
-          overflow: 'hidden',
-        })}
-      >
-        <div
-          className={css({
-            position: 'absolute',
-            inset: 0,
-            backgroundColor: 'rgba(0, 20, 40, 0.35)',
-          })}
-        />
-      </section>
-
+    <main style={{ minHeight: '100vh' }}>
       {/* 제목 섹션 */}
       <section
         className={css({
@@ -144,13 +123,14 @@ export default function InstructorsPage() {
                 wordBreak: 'keep-all',
               })}
             >
-              드림다이브 강사진은 단순히 기술을 전달하는 것 이상의 책임을 다합니다.
+              수도권 최고의 스쿠버 교육 전문 다이빙스쿨로, 10년차 이상의 베테랑 강사진이
+              <br />
+              체계적인 교육부터 국내외 투어까지 함께합니다.
               <br />
               <br />
-              안전한 환경과 체계적인 교육을 통해 초보자부터 고급 다이버까지 모든 수준의 학생들을 지도합니다.
+              초보자부터 고급 다이버까지, 안전한 환경에서 신비로운 수중 세계로의 탐험을
               <br />
-              <br />
-              각 강사는 국제 공인 자격증을 보유하고 있으며, 지속적인 교육과 경험으로 최신 다이빙 기술과 안전 프로토콜을 항상 습득하고 있습니다.
+              책임지겠습니다.
             </p>
             <div
               className={css({

@@ -3,7 +3,9 @@ import SubPageHero from '../components/common/SubPageHero';
 export default function AboutLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <SubPageHero />
+      <div style={{ paddingTop: '100px' }}>
+        <SubPageHero bgImage="/assets/main/49eab77bb0b32.jpg" />
+      </div>
       {children}
     </>
   );
