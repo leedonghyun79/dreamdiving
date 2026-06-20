@@ -1,6 +1,6 @@
 import { prisma } from '@/lib/prisma';
 import { InquiryTable } from '@/components/admin/InquiryTable';
-import { css } from '@/styled-system/css';
+import { css } from '@styled-system/css';
 
 export default async function InquiriesPage() {
   const inquiries = await prisma.inquiry.findMany({

@@ -1,7 +1,7 @@
 'use client';
 
-import { css } from '@/styled-system/css';
-import { flex } from '@/styled-system/patterns';
+import { css } from '@styled-system/css';
+import { flex } from '@styled-system/patterns';
 import { NavLink } from './NavLink';
 
 const menuItems = [

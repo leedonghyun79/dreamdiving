@@ -1,6 +1,6 @@
 'use client';
 
-import { css } from '@/styled-system/css';
+import { css } from '@styled-system/css';
 
 interface VisitorChartProps {
   data: Array<{ date: string; count: number }>;

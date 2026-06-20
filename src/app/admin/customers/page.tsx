@@ -1,6 +1,6 @@
 import { prisma } from '@/lib/prisma';
 import { CustomerTable } from '@/components/admin/CustomerTable';
-import { css } from '@/styled-system/css';
+import { css } from '@styled-system/css';
 
 export default async function CustomersPage() {
   const customers = await prisma.customer.findMany({

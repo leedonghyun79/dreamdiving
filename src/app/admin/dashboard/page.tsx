@@ -1,8 +1,8 @@
 import { prisma } from '@/lib/prisma';
 import { StatCard } from '@/components/admin/StatCard';
 import { VisitorChart } from '@/components/admin/VisitorChart';
-import { css } from '@/styled-system/css';
-import { grid } from '@/styled-system/patterns';
+import { css } from '@styled-system/css';
+import { grid } from '@styled-system/patterns';
 
 export default async function DashboardPage() {
   // 통계 데이터 조회

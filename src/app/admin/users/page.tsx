@@ -1,6 +1,6 @@
 import { prisma } from '@/lib/prisma';
 import { UserTable } from '@/components/admin/UserTable';
-import { css } from '@/styled-system/css';
+import { css } from '@styled-system/css';
 
 export default async function UsersPage() {
   const users = await prisma.user.findMany({
