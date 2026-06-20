@@ -7,6 +7,7 @@ import { PartnerSection } from './components/domain/main/PartnerSection';
 
 import { ProgramSection } from './components/domain/main/ProgramSection';
 import { ReviewSection } from './components/domain/main/ReviewSection';
+import { CtaSection } from './components/domain/main/CtaSection';
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
 
         <ProgramSection />
         <ReviewSection />
+        <CtaSection />
       </main>
     </div>
   );
