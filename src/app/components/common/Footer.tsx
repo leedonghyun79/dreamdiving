@@ -1,6 +1,6 @@
 'use client';
 
-import { ModalType } from '../../types';
+import { ModalType } from '@/app/types';
 
 interface FooterProps {
   onOpenModal: (modal: ModalType) => void;

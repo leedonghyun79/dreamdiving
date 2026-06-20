@@ -3,8 +3,7 @@
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
-import { css } from '../../../styled-system/css';
-import { flex } from '../../../styled-system/patterns';
+import { styles } from './layout.styles';
 
 const PROGRAM_NAV = [
   { id: 'experience', label: '체험 다이빙' },
@@ -50,33 +49,16 @@ export default function ProgramsLayout({ children }: { children: React.ReactNode
   }, [currentId]);
 
   return (
-    <div className={css({ width: '100%', bg: 'white', pb: '120px' })}>
+    <div className={styles.container}>
       {/* Hero Section (Shared across all program pages) */}
-      <div 
-        className={flex({ 
-          width: '100%', 
-          height: '400px', 
-          bg: 'black', 
-          align: 'center', 
-          justify: 'center' 
-        })}
-      >
+      <div className={styles.heroSection}>
         {/* Placeholder for future background image */}
       </div>
 
       {/* Shared Navigation */}
       <nav
         ref={navRef}
-        className={flex({
-          justify: 'center',
-          gap: '40px',
-          py: '24px',
-          borderBottom: '1px solid #eaeaea',
-          bg: 'white',
-          position: 'sticky',
-          top: '80px',
-          zIndex: 10,
-        })}
+        className={styles.navContainer}
       >
         {PROGRAM_NAV.map((nav) => {
           const isActive = nav.id === currentId;
@@ -85,15 +67,7 @@ export default function ProgramsLayout({ children }: { children: React.ReactNode
               key={nav.id}
               href={`/programs/${nav.id}`}
               data-active={isActive}
-              className={css({
-                fontSize: '15px',
-                fontWeight: isActive ? '700' : '500',
-                color: isActive ? '#267db6' : '#666',
-                position: 'relative',
-                textDecoration: 'none',
-                transition: 'color 0.2s',
-                _hover: { color: '#267db6' },
-              })}
+              className={styles.navLink(isActive)}
             >
               {nav.label}
             </Link>
@@ -101,14 +75,7 @@ export default function ProgramsLayout({ children }: { children: React.ReactNode
         })}
         {/* Sliding Indicator */}
         <div 
-          className={css({
-            position: 'absolute',
-            bottom: '-1px',
-            left: 0,
-            height: '2px',
-            bg: '#267db6',
-            // Only apply transition after initial mount to avoid sliding from 0 on page refresh
-          })}
+          className={styles.slidingIndicator}
           style={{
             width: `${lineStyle.width}px`,
             transform: `translateX(${lineStyle.left}px)`,
@@ -119,7 +86,7 @@ export default function ProgramsLayout({ children }: { children: React.ReactNode
       </nav>
 
       {/* Main Content Area (Dynamic children) */}
-      <div className={css({ maxW: '1200px', mx: 'auto', px: '24px', pt: '80px' })}>
+      <div className={styles.mainContent}>
         {children}
       </div>
     </div>

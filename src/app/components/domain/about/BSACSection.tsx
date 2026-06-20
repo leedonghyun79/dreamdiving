@@ -1,6 +1,6 @@
 'use client';
 
-import { COLOR } from '../../../constants/styles';
+import { COLOR } from '@/app/constants/styles';
 
 export function BSACSection() {
   return (

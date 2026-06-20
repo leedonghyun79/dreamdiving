@@ -1,7 +1,7 @@
 'use client';
 
-import ScrollRevealText from '../../common/ScrollRevealText';
-import { COMMON_STYLES, COLOR } from '../../../constants/styles';
+import ScrollRevealText from '@/app/components/common/ScrollRevealText';
+import { COMMON_STYLES, COLOR } from '@/app/constants/styles';
 
 export function MainAboutSection() {
   return (

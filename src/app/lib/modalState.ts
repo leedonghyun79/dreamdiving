@@ -1,6 +1,6 @@
 // src/app/lib/modalState.ts
 import { useState } from 'react';
-import { ModalType } from '../types';
+import { ModalType } from '@/app/types';
 
 export function useModalState() {
   const [modalOpen, setModalOpen] = useState<ModalType>(null);

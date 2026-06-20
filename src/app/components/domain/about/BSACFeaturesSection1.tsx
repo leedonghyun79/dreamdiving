@@ -1,7 +1,7 @@
 'use client';
 
-import ScrollRevealText from '../../common/ScrollRevealText';
-import { COLOR } from '../../../constants/styles';
+import ScrollRevealText from '@/app/components/common/ScrollRevealText';
+import { COLOR } from '@/app/constants/styles';
 
 export function BSACFeaturesSection1() {
   return (

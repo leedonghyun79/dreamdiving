@@ -1,5 +1,5 @@
 // src/app/constants/data.ts
-import { SlideData, ProgramCard, ReviewCard, PartnerLogo, InstructorCard } from '../types';
+import { SlideData, ProgramCard, ReviewCard, PartnerLogo, InstructorCard } from '@/app/types';
 
 export const SLIDES: SlideData[] = [
   {

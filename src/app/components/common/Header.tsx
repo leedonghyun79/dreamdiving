@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import { css } from '../../../../styled-system/css';
+import { styles } from './Header.styles';
 
 const NAV_ITEMS = [
   {
@@ -82,47 +82,19 @@ export default function Header() {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
 
   return (
-    <header
-      className={css({
-        position: 'fixed',
-        top: 0,
-        width: '100%',
-        height: '100px',
-        backgroundColor: 'white',
-        zIndex: 50,
-        borderBottom: '1px solid #f3f4f6',
-      })}
-    >
-      <nav
-        className={css({
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          height: '100%',
-          paddingLeft: '50px',
-          paddingRight: '50px',
-        })}
-      >
+    <header className={styles.header}>
+      <nav className={styles.nav}>
         {/* 로고 */}
         <Link href="/">
           <img
             src="/assets/logo.png"
             alt="Dream Dive"
-            className={css({ width: '83px', height: '81px', objectFit: 'contain', display: 'block' })}
+            className={styles.logoImage}
           />
         </Link>
 
         {/* 메인 메뉴 ul */}
-        <ul
-          className={css({
-            display: 'flex',
-            alignItems: 'stretch',
-            height: '100px',
-            listStyle: 'none',
-            margin: 0,
-            padding: 0,
-          })}
-        >
+        <ul className={styles.menuList}>
           {NAV_ITEMS.map((item) => {
             const isActive = pathname === item.href || pathname.startsWith(item.href + '/');
             const isOpen = openMenu === item.href;
@@ -130,75 +102,35 @@ export default function Header() {
             return (
               <li
                 key={item.href}
-                className={css({ position: 'relative' })}
+                className={styles.menuItem}
                 onMouseEnter={() => setOpenMenu(item.href)}
                 onMouseLeave={() => setOpenMenu(null)}
               >
                 {/* 메인 메뉴 링크 */}
                 <Link
                   href={item.href}
-                  className={css({
-                    display: 'flex',
-                    alignItems: 'center',
-                    height: '100px',
-                    paddingLeft: '26px',
-                    paddingRight: '26px',
-                    fontSize: '15px',
-                    fontWeight: '800',
-                    textDecoration: 'none',
-                    whiteSpace: 'nowrap',
-                    color: isActive || isOpen ? '#267db6' : '#1f1e1e',
-                    transition: 'color 0.2s, border-color 0.2s',
-                  })}
+                  className={styles.menuLink(isActive, isOpen)}
                 >
                   {item.label}
                 </Link>
 
                 {/* 서브 메뉴 ul */}
                 {isOpen && (
-                  <ul
-                    className={css({
-                      position: 'absolute',
-                      top: '100px',
-                      left: 0,
-                      minWidth: 'max-content',
-                      listStyle: 'none',
-                      margin: 0,
-                      backgroundColor: 'white',
-                      borderLeft: '1px solid #e5e7eb',
-                      borderRight: '1px solid #e5e7eb',
-                      borderBottom: '1px solid #e5e7eb',
-                      boxShadow: '0 4px 16px rgba(0,0,0,0.10)',
-                      zIndex: 100,
+                  <ul className={styles.subMenuList}>
+                    {item.sub.map((sub) => {
+                      const isSubActive = pathname === sub.href;
+                      return (
+                        <li key={sub.href}>
+                          <Link
+                            href={sub.href}
+                            onClick={() => setOpenMenu(null)}
+                            className={styles.subMenuLink(isSubActive)}
+                          >
+                            {sub.label}
+                          </Link>
+                        </li>
+                      );
                     })}
-                  >
-                    {item.sub.map((sub) => (
-                      <li key={sub.href}>
-                        <Link
-                          href={sub.href}
-                          onClick={() => setOpenMenu(null)}
-                          className={css({
-                            display: 'block',
-                            paddingTop: '12px',
-                            paddingBottom: '12px',
-                            paddingLeft: '26px',
-                            paddingRight: '26px',
-                            fontSize: '15px',
-                            fontWeight: pathname === sub.href ? '700' : '400',
-                            color: pathname === sub.href ? 'white' : '#333',
-                            backgroundColor: pathname === sub.href ? '#267db6' : 'transparent',
-                            textDecoration: 'none',
-                            whiteSpace: 'nowrap',
-                            _hover: {
-                              backgroundColor: pathname === sub.href ? '#1d6a9f' : '#f0f7ff',
-                              color: pathname === sub.href ? 'white' : '#267db6',
-                            },
-                          })}
-                        >
-                          {sub.label}
-                        </Link>
-                      </li>
-                    ))}
                   </ul>
                 )}
               </li>
@@ -209,25 +141,7 @@ export default function Header() {
         {/* 우측 문의하기 버튼 */}
         <Link
           href="/reservation/inquiry"
-          className={css({
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            paddingTop: '10px',
-            paddingBottom: '10px',
-            paddingLeft: '20px',
-            paddingRight: '20px',
-            backgroundColor: '#267db6',
-            color: 'white',
-            fontSize: '15px',
-            fontWeight: '700',
-            textDecoration: 'none',
-            borderRadius: '9999px',
-            whiteSpace: 'nowrap',
-            flexShrink: 0,
-            transition: 'background-color 0.2s',
-            _hover: { backgroundColor: '#1d6a9f' },
-          })}
+          className={styles.inquiryButton}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

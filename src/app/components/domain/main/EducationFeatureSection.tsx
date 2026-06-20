@@ -1,7 +1,7 @@
 'use client';
 
-import ScrollRevealText from '../../common/ScrollRevealText';
-import { COLOR } from '../../../constants/styles';
+import ScrollRevealText from '@/app/components/common/ScrollRevealText';
+import { COLOR } from '@/app/constants/styles';
 
 const FEATURE_IMAGES = [
   { src: '/assets/main/49eab77bb0b32.jpg', alt: '체계적인 교육' },

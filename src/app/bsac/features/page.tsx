@@ -1,12 +1,12 @@
 'use client';
 
-import { Footer } from '../../components/common/Footer';
-import { useModalState } from '../../lib/modalState';
-import { TermsModal } from '../../components/common/modals/TermsModal';
-import { PrivacyModal } from '../../components/common/modals/PrivacyModal';
-import { BSACFeaturesSection1 } from '../../components/domain/about/BSACFeaturesSection1';
-import { BSACFeaturesSection2 } from '../../components/domain/about/BSACFeaturesSection2';
-import { BSACFeaturesSection3 } from '../../components/domain/about/BSACFeaturesSection3';
+import { Footer } from '@/app/components/common/Footer';
+import { useModalState } from '@/app/lib/modalState';
+import { TermsModal } from '@/app/components/common/modals/TermsModal';
+import { PrivacyModal } from '@/app/components/common/modals/PrivacyModal';
+import { BSACFeaturesSection1 } from '@/app/components/domain/about/BSACFeaturesSection1';
+import { BSACFeaturesSection2 } from '@/app/components/domain/about/BSACFeaturesSection2';
+import { BSACFeaturesSection3 } from '@/app/components/domain/about/BSACFeaturesSection3';
 
 export default function FeaturesPage() {
   const { modalOpen, openModal, closeModal } = useModalState();

@@ -1,6 +1,6 @@
 'use client';
 
-import { PARTNER_LOGOS } from '../../../constants/data';
+import { PARTNER_LOGOS } from '@/app/constants/data';
 
 // 무한 롤링을 위해 로고 배열을 2배로 복제
 const LOGOS = [...PARTNER_LOGOS, ...PARTNER_LOGOS];

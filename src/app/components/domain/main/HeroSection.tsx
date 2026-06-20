@@ -2,8 +2,8 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { css } from '../../../../../styled-system/css';
-import { SLIDES } from '../../../constants/data';
+import { SLIDES } from '@/app/constants/data';
+import { styles } from './HeroSection.styles';
 
 export function HeroSection() {
   const [slideIdx, setSlideIdx] = useState(0);
@@ -33,17 +33,7 @@ export function HeroSection() {
   const slide = SLIDES[slideIdx];
 
   return (
-    <section
-      className={css({
-        position: 'relative',
-        width: '100%',
-        height: '100vh',
-        overflow: 'hidden',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      })}
-    >
+    <section className={styles.section}>
       <div
         style={{
           position: 'absolute',
@@ -85,105 +75,37 @@ export function HeroSection() {
         />
       </div>
 
-      <div className={css({ position: 'absolute', inset: 0, backgroundColor: 'rgba(0,0,0,0.45)', zIndex: 1 })} />
+      <div className={styles.overlay} />
 
       <div
         key={slideIdx}
-        className={css({
-          position: 'relative',
-          zIndex: 10,
-          textAlign: 'center',
-          paddingLeft: '24px',
-          paddingRight: '24px',
-          maxWidth: '800px',
-        })}
+        className={styles.contentContainer}
       >
-        <h1
-          className={css({
-            fontSize: { base: '36px', md: '64px' },
-            fontWeight: '800',
-            color: 'white',
-            lineHeight: '1.3',
-            marginBottom: '20px',
-            wordBreak: 'keep-all',
-            overflowWrap: 'break-word',
-            opacity: 0,
-            animation: 'fadeSlideUp 0.7s ease forwards',
-            animationDelay: '0.1s',
-          })}
-        >
+        <h1 className={styles.title}>
           {slide.main}
         </h1>
 
-        <p
-          className={css({
-            color: 'rgba(255,255,255,0.85)',
-            fontSize: { base: '16px', md: '20px' },
-            lineHeight: '1.7',
-            marginBottom: '36px',
-            wordBreak: 'keep-all',
-            overflowWrap: 'break-word',
-            opacity: 0,
-            animation: 'fadeSlideUp 0.7s ease forwards',
-            animationDelay: '0.5s',
-          })}
-        >
+        <p className={styles.subtitle}>
           {slide.sub}
         </p>
 
         <Link
           href={slide.btnHref}
-          className={css({
-            display: 'inline-flex',
-            alignItems: 'center',
-            paddingTop: '18px',
-            paddingBottom: '18px',
-            paddingLeft: '44px',
-            paddingRight: '44px',
-            backgroundColor: '#267db6',
-            color: 'white',
-            fontSize: '20px',
-            fontWeight: '700',
-            textDecoration: 'none',
-            borderRadius: '9999px',
-            transition: 'background-color 0.2s, transform 0.2s',
-            opacity: 0,
-            animation: 'fadeSlideUp 0.7s ease forwards',
-            animationDelay: '0.9s',
-            _hover: {
-              backgroundColor: '#1d6a9f',
-              transform: 'translateY(-2px)',
-            },
-          })}
+          className={styles.button}
         >
           {slide.btnText}
         </Link>
       </div>
 
       <div
-        className={css({
-          position: 'absolute',
-          bottom: '50px',
-          left: '50%',
-          zIndex: 10,
-          display: 'flex',
-          gap: '12px',
-        })}
+        className={styles.indicatorContainer}
         style={{ transform: 'translateX(-50%)' }}
       >
         {SLIDES.map((_, i) => (
           <button
             key={i}
             onClick={() => goTo(i)}
-            className={css({
-              width: i === slideIdx ? '40px' : '14px',
-              height: '14px',
-              borderRadius: '9999px',
-              border: 'none',
-              cursor: 'pointer',
-              transition: 'all 0.3s',
-              backgroundColor: i === slideIdx ? 'white' : 'rgba(255,255,255,0.45)',
-            })}
+            className={styles.indicatorButton(i === slideIdx)}
           />
         ))}
       </div>

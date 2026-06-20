@@ -1,5 +1,5 @@
-import { ProgramDetailLayout } from '../../components/domain/programs/ProgramDetailLayout';
-import { ProgramDetail } from '../../types';
+import { ProgramDetailLayout } from '@/app/components/domain/programs/ProgramDetailLayout';
+import { ProgramDetail } from '@/app/types';
 
 const programData: ProgramDetail = {
   id: 'advanced',

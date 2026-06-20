@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { css } from "../../styled-system/css";
 import Header from "./components/common/Header";
+import { GlobalFooter } from "./components/common/GlobalFooter";
+import { styles } from "./layout.styles";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -21,16 +22,11 @@ export default function RootLayout({
     <html lang="ko" style={{ height: "100%" }}>
       <body
         suppressHydrationWarning
-        className={css({
-          minHeight: "100%",
-          display: "flex",
-          flexDirection: "column",
-          backgroundColor: "white",
-          fontFamily: "'Noto Sans KR', sans-serif",
-        })}
+        className={styles.body}
       >
         <Header />
         {children}
+        <GlobalFooter />
       </body>
     </html>
   );

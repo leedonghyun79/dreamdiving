@@ -1,8 +1,8 @@
 'use client';
 
-import ScrollRevealText from '../../common/ScrollRevealText';
-import { REVIEWS } from '../../../constants/data';
-import { COMMON_STYLES, COLOR } from '../../../constants/styles';
+import ScrollRevealText from '@/app/components/common/ScrollRevealText';
+import { REVIEWS } from '@/app/constants/data';
+import { COMMON_STYLES, COLOR } from '@/app/constants/styles';
 
 function StarRating() {
   return (

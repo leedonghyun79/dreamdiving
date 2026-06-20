@@ -1,4 +1,4 @@
-import SubPageHero from '../components/common/SubPageHero';
+import SubPageHero from '@/app/components/common/SubPageHero';
 
 export default function AboutLayout({ children }: { children: React.ReactNode }) {
   return (
