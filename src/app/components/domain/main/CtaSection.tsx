@@ -9,7 +9,7 @@ const COL2 = [...GALLERY_IMAGES.filter((_, i) => i % 2 === 1), ...GALLERY_IMAGES
 
 export function CtaSection() {
   return (
-    <section style={{ padding: '100px 0', backgroundColor: '#fff', overflow: 'hidden' }}>
+    <section style={{ padding: '100px 0', backgroundColor: '#fff' }}>
       <div style={{ maxWidth: '1520px', margin: '0 auto', padding: '0 50px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center' }}>
         <div>
           <div style={COMMON_STYLES.badge}>
