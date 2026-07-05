@@ -1,8 +1,5 @@
 'use client';
 
-import ScrollRevealText from '@/app/components/common/ScrollRevealText';
-import { COMMON_STYLES, COLOR } from '@/app/constants/styles';
-
 export function AboutSection() {
   return (
     <section
@@ -13,129 +10,93 @@ export function AboutSection() {
     >
       <div
         style={{
-          maxWidth: '1520px',
+          maxWidth: '1200px',
           margin: '0 auto',
-          padding: '0 50px',
+          padding: '0 20px',
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',
-          gap: '80px',
+          gap: '60px',
           alignItems: 'center',
         }}
       >
-        <div>
-          <div style={COMMON_STYLES.badge}>
-
-            Expert Instructor
+        {/* Left Side: Texts */}
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+          <div style={{ marginBottom: '16px' }}>
+            <img
+              src="/assets/dreamdive_about/title.png"
+              alt="DREAM DIVE"
+              style={{ width: '400px', maxWidth: '100%', height: 'auto', objectFit: 'contain' }}
+            />
           </div>
-
-          <h2
+          <p
             style={{
-              fontSize: '44px',
-              fontWeight: '900',
-              lineHeight: '1.2',
-              marginBottom: '24px',
+              fontSize: '18px',
+              color: '#888',
+              marginBottom: '60px',
               wordBreak: 'keep-all',
             }}
           >
-            <span style={{ color: COLOR.primary }}>
-              <ScrollRevealText text="최고의 강사진과 함께하는" charDelay={45} />
-            </span>
+            수도권 최고의 스쿠버다이빙 교육센터 드림 다이버입니다.
+          </p>
+
+          <h2
+            style={{
+              fontSize: '26px',
+              fontWeight: '700',
+              lineHeight: '1.4',
+              color: '#1a6fba', // Deep blue color based on screenshot
+              marginBottom: '30px',
+              wordBreak: 'keep-all',
+            }}
+          >
+            체계적이고 전문화된 강사진들의 안전하고
             <br />
-            <span style={{ color: COLOR.text }}>
-              <ScrollRevealText text="드림다이브 다이빙 여정." charDelay={45} />
-            </span>
+            즐거운 고퀄리티 전담 수중 교육,
           </h2>
 
           <p
             style={{
-              fontSize: '17px',
-              color: COLOR.textSecondary,
-              lineHeight: '1.85',
-              marginBottom: '40px',
+              fontSize: '16px',
+              color: '#666',
+              lineHeight: '1.6',
               wordBreak: 'keep-all',
             }}
           >
-            <ScrollRevealText
-              text="믿을 수 있는 전문 강사진과 함께하는 다이빙, 1:1 맞춤 교육부터 강사 자격취득까지"
-              charDelay={20}
-            />
+            교육진행은 프라이빗 1:1 교육 및 2:1교육과 클래스 두가지로
             <br />
-            <ScrollRevealText
-              text="체계적인 교육 과정을 제공합니다."
-              charDelay={20}
-            />
+            전문 강사진의 엄격한 관리하에 진행됩니다.
           </p>
-
-          <a
-            href="/about"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              padding: '14px 28px',
-              border: `1px solid ${COLOR.primary}`,
-              borderRadius: '8px',
-              color: COLOR.primary,
-              fontSize: '15px',
-              fontWeight: '700',
-              textDecoration: 'none',
-              transition: 'all 0.2s',
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.backgroundColor = COLOR.primary;
-              (e.currentTarget as HTMLAnchorElement).style.color = 'white';
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'transparent';
-              (e.currentTarget as HTMLAnchorElement).style.color = COLOR.primary;
-            }}
-          >
-            드림다이브 소개
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </a>
         </div>
 
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gridTemplateRows: 'auto auto',
-            gap: '12px',
-          }}
-        >
+        {/* Right Side: Image with gradient fade */}
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <div
             style={{
-              gridRow: '1 / 3',
+              position: 'relative',
+              width: '100%',
+              maxWidth: '503px',
+              height: '570px',
               borderRadius: '16px',
               overflow: 'hidden',
-              height: '460px',
-              position: 'relative',
             }}
           >
             <img
-              src="/assets/main/49eab77bb0b32.jpg"
-              alt="다이빙 1"
+              src="/assets/dreamdive_about/right_img.png"
+              alt="Dream Dive Instructors"
               style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />
-          </div>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            <div style={{ borderRadius: '16px', overflow: 'hidden', height: '220px' }}>
-              <img
-                src="/assets/main/fb5797dd599e9.jpg"
-                alt="다이빙 2"
-                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-              />
-            </div>
-            <div style={{ borderRadius: '16px', overflow: 'hidden', height: '220px' }}>
-              <img
-                src="/assets/main/8521cb2ab2e41.jpg"
-                alt="다이빙 3"
-                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-              />
-            </div>
+            {/* White gradient overlay at the bottom */}
+            <div
+              style={{
+                position: 'absolute',
+                bottom: 0,
+                left: 0,
+                width: '100%',
+                height: '150px',
+                background: 'linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%)',
+                pointerEvents: 'none',
+              }}
+            />
           </div>
         </div>
       </div>

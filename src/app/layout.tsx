@@ -27,7 +27,9 @@ export default function RootLayout({
         <div id="site-header">
           <Header />
         </div>
-        {children}
+        <div id="site-main" style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+          {children}
+        </div>
         <div id="site-footer">
           <GlobalFooter />
         </div>

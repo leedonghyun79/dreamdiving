@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import ScrollRevealText from '@/app/components/common/ScrollRevealText';
 import { PROGRAMS } from '@/app/constants/data';
 import { COMMON_STYLES, COLOR } from '@/app/constants/styles';
@@ -17,17 +18,60 @@ export function ProgramSection() {
   return (
     <section style={{ padding: '100px 0', backgroundColor: '#f8f9fb' }}>
       <div style={{ maxWidth: '1520px', margin: '0 auto', padding: '0 50px' }}>
-        <div style={{ marginBottom: '60px' }}>
-          <div style={COMMON_STYLES.badge}>
-
-            Programs
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '60px' }}>
+          <div>
+            <div style={COMMON_STYLES.badge}>
+              Programs
+            </div>
+            <h2 style={COMMON_STYLES.heading2}>
+              <ScrollRevealText text="프로그램 안내" charDelay={40} />
+            </h2>
+            <p style={COMMON_STYLES.subtitle}>
+              <ScrollRevealText text="입문부터 강사과정까지, 수도권 최고의 다이빙 교육을 경험하세요." charDelay={25} />
+            </p>
           </div>
-          <h2 style={COMMON_STYLES.heading2}>
-            <ScrollRevealText text="프로그램 안내" charDelay={40} />
-          </h2>
-          <p style={COMMON_STYLES.subtitle}>
-            <ScrollRevealText text="입문부터 강사과정까지, 수도권 최고의 다이빙 교육을 경험하세요." charDelay={25} />
-          </p>
+          <div style={{ display: 'flex', gap: '12px', marginBottom: '8px' }}>
+            <button
+              onClick={prev}
+              disabled={current === 0}
+              style={{
+                width: '48px',
+                height: '48px',
+                borderRadius: '50%',
+                border: '1.5px solid #ddd',
+                backgroundColor: current === 0 ? '#f5f5f5' : 'white',
+                cursor: current === 0 ? 'not-allowed' : 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                transition: 'all 0.2s',
+              }}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={current === 0 ? '#ccc' : COLOR.text} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button
+              onClick={next}
+              disabled={current === max}
+              style={{
+                width: '48px',
+                height: '48px',
+                borderRadius: '50%',
+                border: '1.5px solid #ddd',
+                backgroundColor: current === max ? '#f5f5f5' : 'white',
+                cursor: current === max ? 'not-allowed' : 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                transition: 'all 0.2s',
+              }}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={current === max ? '#ccc' : COLOR.text} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
         </div>
 
         <div style={{ position: 'relative' }}>
@@ -41,9 +85,10 @@ export function ProgramSection() {
               }}
             >
               {PROGRAMS.map((prog, i) => (
-                <div
+                <Link
+                  href={prog.href}
                   key={prog.title}
-                  style={{ flex: `0 0 calc((100% - ${(visible - 1) * 24}px) / ${visible})` }}
+                  style={{ flex: `0 0 calc((100% - ${(visible - 1) * 24}px) / ${visible})`, display: 'block', textDecoration: 'none' }}
                   onMouseEnter={() => setHoveredIdx(i)}
                   onMouseLeave={() => setHoveredIdx(null)}
                 >
@@ -72,8 +117,7 @@ export function ProgramSection() {
                         transform: hoveredIdx === i ? 'scale(1.04)' : 'scale(1)',
                       }}
                     />
-                    <a
-                      href={prog.href}
+                    <div
                       style={{
                         position: 'absolute',
                         bottom: '16px',
@@ -87,7 +131,6 @@ export function ProgramSection() {
                         justifyContent: 'center',
                         boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
                         transition: 'background-color 0.25s',
-                        textDecoration: 'none',
                       }}
                     >
                       <svg
@@ -102,77 +145,19 @@ export function ProgramSection() {
                       >
                         <path d="M5 12h14M12 5l7 7-7 7" />
                       </svg>
-                    </a>
+                    </div>
                   </div>
                   <p style={{ fontSize: '11px', color: COLOR.primary, fontWeight: '600', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: '4px' }}>
                     {prog.subtitle}
                   </p>
                   <p style={{ fontSize: '18px', fontWeight: '700', color: COLOR.text, wordBreak: 'keep-all' }}>{prog.title}</p>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
 
-          <div style={{ display: 'flex', gap: '12px', marginTop: '40px', alignItems: 'center' }}>
-            <button
-              onClick={prev}
-              disabled={current === 0}
-              style={{
-                width: '48px',
-                height: '48px',
-                borderRadius: '50%',
-                border: '1.5px solid #ddd',
-                backgroundColor: current === 0 ? '#f5f5f5' : 'white',
-                cursor: current === 0 ? 'not-allowed' : 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                transition: 'all 0.2s',
-              }}
-            >
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke={current === 0 ? '#ccc' : COLOR.text}
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M19 12H5M12 19l-7-7 7-7" />
-              </svg>
-            </button>
-            <button
-              onClick={next}
-              disabled={current === max}
-              style={{
-                width: '48px',
-                height: '48px',
-                borderRadius: '50%',
-                border: '1.5px solid #ddd',
-                backgroundColor: current === max ? '#f5f5f5' : 'white',
-                cursor: current === max ? 'not-allowed' : 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                transition: 'all 0.2s',
-              }}
-            >
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke={current === max ? '#ccc' : COLOR.text}
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </button>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginLeft: '8px' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '40px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               {Array.from({ length: max + 1 }).map((_, i) => (
                 <button
                   key={i}

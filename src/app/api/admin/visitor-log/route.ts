@@ -6,23 +6,14 @@ export async function POST(request: NextRequest) {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
-    const existingLog = await prisma.visitorLog.findUnique({
+    await prisma.visitorLog.upsert({
       where: { date: today },
+      update: { count: { increment: 1 } },
+      create: {
+        date: today,
+        count: 1,
+      },
     });
-
-    if (existingLog) {
-      await prisma.visitorLog.update({
-        where: { date: today },
-        data: { count: { increment: 1 } },
-      });
-    } else {
-      await prisma.visitorLog.create({
-        data: {
-          date: today,
-          count: 1,
-        },
-      });
-    }
 
     return NextResponse.json({ success: true });
   } catch (error) {
