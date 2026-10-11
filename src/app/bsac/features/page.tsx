@@ -1,80 +1,17 @@
-'use client';
+import { BSAC_FEATURES_BLOCKS, BSAC_FEATURES_LEAD } from '@/app/constants/bsac';
+import { BsacLead } from '@/app/components/domain/bsac/BsacLead';
+import { BsacBlock } from '@/app/components/domain/bsac/BsacBlock';
+import { styles } from '@/app/components/domain/bsac/Bsac.styles';
 
-import { Footer } from '@/app/components/common/Footer';
-import { useModalState } from '@/app/lib/modalState';
-import { TermsModal } from '@/app/components/common/modals/TermsModal';
-import { PrivacyModal } from '@/app/components/common/modals/PrivacyModal';
-import { BSACFeaturesSection1 } from '@/app/components/domain/about/BSACFeaturesSection1';
-import { BSACFeaturesSection2 } from '@/app/components/domain/about/BSACFeaturesSection2';
-import { BSACFeaturesSection3 } from '@/app/components/domain/about/BSACFeaturesSection3';
-
-export default function FeaturesPage() {
-  const { modalOpen, openModal, closeModal } = useModalState();
-
+export default function BsacFeaturesPage() {
   return (
-    <main style={{ width: '100%' }}>
-      {/* 배너 섹션 */}
-      <section
-        style={{
-          position: 'relative',
-          width: '100%',
-          height: '500px',
-          backgroundImage: 'url(/assets/main/49eab77bb0b32.jpg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          marginBottom: '0',
-        }}
-      >
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            backgroundColor: 'rgba(0,0,0,0.4)',
-          }}
-        />
-        <div
-          style={{
-            position: 'relative',
-            zIndex: 10,
-            textAlign: 'center',
-            color: 'white',
-          }}
-        >
-          <h1
-            style={{
-              fontSize: '64px',
-              fontWeight: '900',
-              marginBottom: '20px',
-              lineHeight: '1.2',
-            }}
-          >
-            BSAC KOREA
-          </h1>
-          <p
-            style={{
-              fontSize: '20px',
-              color: 'rgba(255,255,255,0.85)',
-            }}
-          >
-            그 권위와 전통으로 세계를 이끌어 갑니다.
-          </p>
-        </div>
-      </section>
-
-      {/* 주요 섹션들 */}
-      <BSACFeaturesSection1 />
-      <BSACFeaturesSection2 />
-      <BSACFeaturesSection3 />
-
-      {/* Footer */}
-      <Footer onOpenModal={openModal} />
-
-      {/* 모달 */}
-      <TermsModal isOpen={modalOpen === 'terms'} onClose={closeModal} />
-      <PrivacyModal isOpen={modalOpen === 'privacy'} onClose={closeModal} />
+    <main className={styles.page}>
+      <div className={styles.inner}>
+        <BsacLead lead={BSAC_FEATURES_LEAD} imageRatio="1 / 1" />
+        {BSAC_FEATURES_BLOCKS.map((b) => (
+          <BsacBlock key={b.title} {...b} />
+        ))}
+      </div>
     </main>
   );
 }
