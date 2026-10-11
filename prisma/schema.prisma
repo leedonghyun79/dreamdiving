@@ -67,3 +67,28 @@ model VisitorLog {
 
   @@unique([date])
 }
+
+model Schedule {
+  id String @id @default(cuid())
+  program String
+  date String
+  time String?
+  title String
+  capacity Int?
+  memo String?
+  createdAt DateTime @default(now())
+
+  @@index([program, date])
+}
+
+model Post {
+  id String @id @default(cuid())
+  board String
+  title String
+  content String
+  author String @default("관리자")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([board, createdAt])
+}
