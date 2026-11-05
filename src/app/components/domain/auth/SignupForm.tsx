@@ -1,6 +1,7 @@
 'use client';
 
 import { FormEvent, useState } from 'react';
+import { EMAIL_RE, PASSWORD_RULES, isValidPassword } from '@/lib/passwordRules';
 
 const TERMS_TEXT = `제1조 (목적)
 본 이용약관은 "사이트명"(이하 "사이트")이 제공하는 서비스의 이용조건과 운영에 관한 제반 사항을 규정함을 목적으로 합니다.
@@ -26,18 +27,7 @@ const PRIVACY_TEXT = `1. 개인정보 수집목적 및 이용목적
 3. 개인정보 보유 및 이용기간
 회원 탈퇴 시까지 보유하며, 탈퇴 후 지체 없이 파기합니다. 단, 관계 법령에 따라 보존이 필요한 경우 해당 기간 동안 보관합니다.`;
 
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-// 비밀번호 규칙
-const PASSWORD_RULES = [
-  { label: '8자 이상', test: (pw: string) => pw.length >= 8 },
-  { label: '대문자 포함', test: (pw: string) => /[A-Z]/.test(pw) },
-  { label: '소문자 포함', test: (pw: string) => /[a-z]/.test(pw) },
-  { label: '숫자 포함', test: (pw: string) => /[0-9]/.test(pw) },
-  { label: '특수문자 포함', test: (pw: string) => /[^A-Za-z0-9]/.test(pw) },
-];
-
-const isValidPassword = (pw: string) => PASSWORD_RULES.every((rule) => rule.test(pw));
+// 이메일/비밀번호 규칙은 서버와 같은 파일을 사용 (src/lib/passwordRules.ts)
 
 const inputStyle: React.CSSProperties = {
   width: '100%',
@@ -154,6 +144,10 @@ export function SignupForm() {
   const [name, setName] = useState('');
 
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [done, setDone] = useState(false);
+  const [pwFocused, setPwFocused] = useState(false);
+  const [confirmFocused, setConfirmFocused] = useState(false);
   const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [error, setError] = useState('');
 
@@ -164,12 +158,12 @@ export function SignupForm() {
   const emailError = !email.trim()
     ? '이메일을 입력해주세요.'
     : !EMAIL_RE.test(email)
-      ? '이메일 형식이 올바르지 않아요.'
+      ? '이메일을 올바르게 입력해주세요.'
       : '';
   const passwordError = !password
     ? '비밀번호를 입력해주세요.'
-    : !isValidPassword(password)
-      ? '비밀번호 규칙을 모두 충족해 주세요.'
+    : !isValidPassword(password, email)
+      ? '비밀번호 조건을 확인해주세요.'
       : '';
   const confirmError = !passwordConfirm
     ? '비밀번호 확인을 입력해주세요.'
@@ -189,7 +183,7 @@ export function SignupForm() {
     setAgreeAge(checked);
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitted(true);
     setError('');
@@ -197,8 +191,34 @@ export function SignupForm() {
     if (!requiredAgreed) return setError('필수 약관에 모두 동의해주세요.');
     if (!isFormValid) return;
 
-    // TODO: 회원가입 처리 (인증 연동 후)
+    setSubmitting(true);
+    try {
+      const res = await fetch('/api/auth/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, password, passwordConfirm }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        setError(data.message ?? '회원가입에 실패했어요. 잠시 후 다시 시도해주세요.');
+        return;
+      }
+      setDone(true);
+    } catch {
+      setError('네트워크 오류가 발생했어요. 다시 시도해주세요.');
+    } finally {
+      setSubmitting(false);
+    }
   };
+
+  if (done) {
+    return (
+      <div style={{ textAlign: 'center', padding: '24px 0' }}>
+        <p style={{ fontSize: '18px', fontWeight: '700', color: '#111', margin: '0 0 8px' }}>회원가입이 완료되었어요.</p>
+        <p style={{ fontSize: '15px', color: '#666', margin: 0 }}>드림다이브 회원이 되신 것을 환영합니다.</p>
+      </div>
+    );
+  }
 
   return (
     <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
@@ -248,23 +268,29 @@ export function SignupForm() {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          onBlur={() => markTouched('password')}
+          onFocus={() => setPwFocused(true)}
+          onBlur={() => {
+            setPwFocused(false);
+            markTouched('password');
+          }}
           style={inputStyle}
         />
-        <ul style={{ listStyle: 'none', margin: '10px 0 0', padding: 0, display: 'flex', flexDirection: 'column', gap: '6px' }}>
-          {PASSWORD_RULES.map((rule) => {
-            const ok = rule.test(password);
-            return (
-              <li
-                key={rule.label}
-                style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: ok ? '#267db6' : '#888' }}
-              >
-                <span style={{ width: '14px', textAlign: 'center', fontWeight: '700' }}>{ok ? '✓' : '○'}</span>
-                {rule.label}
-              </li>
-            );
-          })}
-        </ul>
+        {(pwFocused || password.length > 0) && (
+          <ul style={{ listStyle: 'none', margin: '10px 0 0', padding: 0, display: 'flex', flexDirection: 'column', gap: '6px' }}>
+            {PASSWORD_RULES.map((rule) => {
+              const ok = rule.test(password, email);
+              return (
+                <li
+                  key={rule.label}
+                  style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: ok ? '#16a34a' : '#e53e3e' }}
+                >
+                  <span style={{ width: '14px', textAlign: 'center', fontWeight: '700' }}>{ok ? '✓' : '✕'}</span>
+                  {rule.label}
+                </li>
+              );
+            })}
+          </ul>
+        )}
         {showError('password') && passwordError && <p style={errorTextStyle}>{passwordError}</p>}
       </div>
 
@@ -278,9 +304,16 @@ export function SignupForm() {
           type="password"
           value={passwordConfirm}
           onChange={(e) => setPasswordConfirm(e.target.value)}
-          onBlur={() => markTouched('confirm')}
+          onFocus={() => setConfirmFocused(true)}
+          onBlur={() => {
+            setConfirmFocused(false);
+            markTouched('confirm');
+          }}
           style={inputStyle}
         />
+        {confirmFocused && (
+          <p style={{ fontSize: '13px', color: '#888', margin: '8px 0 0' }}>확인을 위해 새 비밀번호를 다시 입력해주세요.</p>
+        )}
         {showError('confirm') && confirmError && <p style={errorTextStyle}>{confirmError}</p>}
       </div>
 
@@ -327,6 +360,7 @@ export function SignupForm() {
 
       <button
         type="submit"
+        disabled={submitting}
         style={{
           height: '54px',
           border: 'none',

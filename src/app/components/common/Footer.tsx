@@ -8,7 +8,7 @@ interface FooterProps {
 
 export function Footer({ onOpenModal }: FooterProps) {
   return (
-    <footer style={{ backgroundColor: '#0f1923', color: '#8b9bb4', padding: '48px 0 32px' }}>
+    <footer style={{ marginTop: '100px', backgroundColor: '#0f1923', color: '#8b9bb4', padding: '48px 0 32px' }}>
       <div style={{ maxWidth: '1520px', margin: '0 auto', padding: '0 50px' }}>
 
         {/* 회사 정보 */}

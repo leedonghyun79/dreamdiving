@@ -1,11 +1,11 @@
 'use client';
 
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { getAdminPassword, clearAdminPassword } from '@/lib/adminClient';
 import { BoardConfig } from '@/app/constants/board';
 import { BoardTitle } from './BoardTitle';
+import ColumnEditor from '@/components/editor/ColumnEditor';
 import { styles } from './Board.styles';
 
 interface Props {
@@ -60,19 +60,26 @@ export function PostForm({ board, post }: Props) {
           onChange={(e) => setTitle(e.target.value)}
           maxLength={200}
         />
-        <textarea
-          className={styles.textarea}
-          placeholder="내용을 입력하세요"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-        />
+        <ColumnEditor value={content} onChange={(html) => setContent(html)} placeholder="내용을 입력하세요" />
         {error && <p className={styles.error}>{error}</p>}
-        <div className={styles.formActions}>
-          <Link href={post ? `/community/${board.id}/${post.id}` : `/community/${board.id}`} className={styles.btn}>
-            취소
-          </Link>
-          <button type="submit" className={`${styles.btn} ${styles.btnPrimary}`} disabled={busy}>
-            {post ? '수정' : '등록'}
+        <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '8px' }}>
+          <button
+            type="submit"
+            disabled={busy}
+            style={{
+              minWidth: '120px',
+              height: '44px',
+              padding: '0 24px',
+              border: 'none',
+              borderRadius: '8px',
+              backgroundColor: '#267db6',
+              color: '#fff',
+              fontSize: '15px',
+              fontWeight: '700',
+              cursor: busy ? 'not-allowed' : 'pointer',
+            }}
+          >
+            {post ? '수정' : '작성'}
           </button>
         </div>
       </form>

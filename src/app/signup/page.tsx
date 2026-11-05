@@ -10,7 +10,9 @@ export default function SignupPage() {
         <h1 style={{ fontSize: '32px', fontWeight: '700', color: '#111', textAlign: 'center', margin: '0 0 40px' }}>
           회원가입
         </h1>
-        <SignupForm />
+        <div style={{ border: '1px solid #ddd', borderRadius: '8px', padding: '40px 32px', boxSizing: 'border-box' }}>
+          <SignupForm />
+        </div>
       </div>
     </main>
   );

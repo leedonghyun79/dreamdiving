@@ -11,10 +11,26 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
+    "@codemirror/lang-html": "6.4.12",
     "@prisma/client": "^5.10.2",
+    "@tiptap/core": "3.31.3",
+    "@tiptap/extension-code-block-lowlight": "3.31.3",
+    "@tiptap/extension-image": "3.31.3",
+    "@tiptap/extension-text-align": "3.31.3",
+    "@tiptap/extension-text-style": "3.31.3",
+    "@tiptap/extensions": "3.31.3",
+    "@tiptap/pm": "3.31.3",
+    "@tiptap/react": "3.31.3",
+    "@tiptap/starter-kit": "3.31.3",
+    "@uiw/react-codemirror": "4.25.11",
+    "bcryptjs": "3.0.3",
+    "highlight.js": "11.12.0",
+    "lowlight": "3.3.0",
+    "lucide-react": "0.470.0",
     "next": "16.2.1",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "sonner": "1.7.4"
   },
   "devDependencies": {
     "@pandacss/dev": "^1.11.3",

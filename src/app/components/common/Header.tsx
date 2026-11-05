@@ -54,8 +54,7 @@ const NAV_ITEMS = [
     href: '/facility',
     sub: [
       { label: 'K26 다이빙 풀장', href: '/facility/k26' },
-      { label: '해양 실습 - 강릉', href: '/facility/gangneung' },
-      { label: '해양 실습 - 양양', href: '/facility/yangyang' },
+      { label: '해양 실습 장소', href: '/facility/gangneung' },
     ],
   },
   {
