@@ -1,6 +1,6 @@
 'use client';
 
-import ScrollRevealText from '@/app/components/common/ScrollRevealText';
+import ScrollRevealText, { getRevealTime } from '@/app/components/common/ScrollRevealText';
 import { GALLERY_IMAGES } from '@/app/constants/data';
 import { COMMON_STYLES, COLOR } from '@/app/constants/styles';
 
@@ -12,14 +12,10 @@ export function CtaSection() {
     <section style={{ padding: '100px 0', backgroundColor: '#fff' }}>
       <div style={{ maxWidth: '1520px', margin: '0 auto', padding: '0 50px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center' }}>
         <div>
-          <div style={COMMON_STYLES.badge}>
-
-            Consultation
-          </div>
 
           <h2
             style={{
-              fontSize: '44px',
+              fontSize: '36px',
               fontWeight: '900',
               lineHeight: '1.3',
               marginBottom: '24px',
@@ -27,17 +23,23 @@ export function CtaSection() {
               color: COLOR.text,
             }}
           >
-            <ScrollRevealText text="안전한 교육과 풍부한 경험으로" charDelay={35} />
-            <br />
-            <ScrollRevealText text="특별한 추억을" charDelay={35} />
+            <ScrollRevealText text="안전한 교육과 풍부한 경험으로 특별한 추억을" charDelay={35} />
             <br />
             <span style={{ color: COLOR.primary }}>
               <ScrollRevealText text="드림다이브와 함께하세요." charDelay={35} />
             </span>
           </h2>
 
-          <p style={{ fontSize: '17px', color: COLOR.textSecondary, lineHeight: '1.85', marginBottom: '40px', wordBreak: 'keep-all' }}>
-            <ScrollRevealText text="K26 풀장부터 강릉·양양 해양 실습까지, 드림다이브의 생생한 현장을 만나보세요." charDelay={18} />
+          <p style={{ fontSize: '18px', color: COLOR.textSecondary, lineHeight: '1.85', marginBottom: '40px', wordBreak: 'keep-all' }}>
+            <ScrollRevealText
+              text="K26 풀장부터 강릉·양양 해양 실습까지, 드림다이브의 생생한 현장을 만나보세요."
+              charDelay={18}
+              delay={Math.max(
+                getRevealTime('안전한 교육과 풍부한 경험으로', 35),
+                getRevealTime('특별한 추억을', 35),
+                getRevealTime('드림다이브와 함께하세요.', 35)
+              )}
+            />
           </p>
 
           <a

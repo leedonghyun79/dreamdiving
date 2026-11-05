@@ -11,7 +11,7 @@ export const styles = {
   page: css({ w: '100%', bg: 'white', pt: { base: '60px', md: '90px' }, pb: { base: '60px', md: '120px' } }),
   inner: css({
     w: '100%',
-    maxW: '1200px',
+    maxW: '1280px',
     mx: 'auto',
     px: '20px',
     display: 'flex',
@@ -28,7 +28,7 @@ export const styles = {
     fontFamily: "Georgia, 'Times New Roman', serif",
     color: '#1d3557',
   }),
-  subtitle: css({ fontSize: '19px', color: '#888', mt: '8px', mb: { base: '40px', md: '70px' } }),
+  subtitle: css({ fontSize: '18px', color: '#888', mt: '8px', mb: { base: '40px', md: '70px' } }),
 
   block: (imageSide: 'left' | 'right') =>
     css({
@@ -37,7 +37,7 @@ export const styles = {
     }),
   textCol: css({ display: 'flex', flexDirection: 'column', gap: '18px' }),
   title: css({ fontSize: '26px', fontWeight: '700', color: '#111', mb: '2px', wordBreak: 'keep-all' }),
-  p: css({ fontSize: '17px', lineHeight: 1.8, color: '#444', wordBreak: 'keep-all' }),
+  p: css({ fontSize: '18px', lineHeight: 1.8, color: '#444', wordBreak: 'keep-all', margin: 0 }),
   em: css({ fontWeight: '700', color: '#267db6' }),
 
   // 이미지가 들어갈 자리 (검정 박스)

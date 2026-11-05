@@ -7,7 +7,7 @@ export default function BsacIntroPage() {
   return (
     <main className={styles.page}>
       <div className={styles.inner}>
-        <BsacLead lead={BSAC_INTRO_LEAD} imageRatio="3 / 4" />
+        <BsacLead lead={BSAC_INTRO_LEAD} imageRatio="3 / 4" image={encodeURI('/assets/basc 단체/소개/소개.webp')} />
         <div className={styles.video} />
         {BSAC_INTRO_BLOCKS.map((b) => (
           <BsacBlock key={b.title} {...b} />

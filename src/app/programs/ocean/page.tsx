@@ -7,6 +7,7 @@ const programData: ProgramDetail = {
   nameKo: '오션 다이버',
   description: '독립적인 다이버로 성장하기 위한 첫 정규 자격증 코스!\n전 세계 어디서나 통용되는 자격을 취득하세요.',
   courseTitle: '오션 다이버 코스',
+  courseImage: encodeURI('/assets/프로그램 안내/오션 다이버 코스.webp'),
   courseDescriptions: [
     'BSAC 오션 다이버 코스는 초보자가 안전하게 펀 다이빙을 즐길 수 있도록 필수 지식과 기술을 깊이 있게 다루는 핵심 과정입니다.',
     '다양한 수중 환경에 대처할 수 있는 실전 스킬을 반복 숙달하며, 다이빙 계획 수립 및 버디 시스템의 중요성을 배웁니다.',

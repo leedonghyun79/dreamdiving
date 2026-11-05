@@ -7,6 +7,7 @@ const programData: ProgramDetail = {
   nameKo: '디스커버리 다이버',
   description: '다이빙의 기초를 배우고 물에 대한 자신감을 기르는 과정!\n체계적인 교육으로 안전하게 다이빙에 입문하세요.',
   courseTitle: '디스커버리 다이버 코스',
+  courseImage: encodeURI('/assets/프로그램 안내/디스커버리 다이버.webp'),
   courseDescriptions: [
     '다이빙을 처음 접하는 분들을 위해 설계된 입문 과정으로, 스쿠버 장비의 기본 사용법과 수중 적응 훈련을 진행합니다.',
     '수영장(또는 제한 수역)에서 필수 스킬을 연습하고, 바다에서 안전하게 첫 다이빙을 경험할 수 있습니다.',

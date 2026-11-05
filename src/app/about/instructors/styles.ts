@@ -2,8 +2,8 @@ import { css } from '@styled-system/css';
 
 export const styles = {
   headerSection: css({
-    paddingTop: { base: '60px', md: '80px' },
-    paddingBottom: { base: '40px', md: '60px' },
+    paddingTop: '50px',
+    paddingBottom: '50px',
     paddingLeft: { base: '20px', md: '50px' },
     paddingRight: { base: '20px', md: '50px' },
     backgroundColor: 'white',
@@ -26,7 +26,7 @@ export const styles = {
     wordBreak: 'keep-all',
   }),
   headerDescription: css({
-    fontSize: { base: '14px', md: '16px' },
+    fontSize: '18px',
     color: '#4b5563',
     lineHeight: '1.8',
     maxWidth: '700px',
@@ -35,8 +35,8 @@ export const styles = {
   }),
   
   mainSection: css({
-    paddingTop: { base: '40px', md: '60px' },
-    paddingBottom: { base: '60px', md: '100px' },
+    paddingTop: '50px',
+    paddingBottom: '50px',
     paddingLeft: { base: '20px', md: '50px' },
     paddingRight: { base: '20px', md: '50px' },
     backgroundColor: '#f8fafb',
@@ -71,7 +71,7 @@ export const styles = {
     wordBreak: 'keep-all',
   }),
   mainDescription: css({
-    fontSize: { base: '14px', md: '15px' },
+    fontSize: '18px',
     color: '#4b5563',
     lineHeight: '1.8',
     marginBottom: '20px',
@@ -90,9 +90,10 @@ export const styles = {
     color: '#0891b2',
   }),
   statLabel: css({
-    fontSize: '12px',
+    fontSize: '14px',
     color: '#4b5563',
-    marginTop: '4px',
+    marginTop: '6px',
+    whiteSpace: 'nowrap',
   }),
   imageContainer: css({
     position: 'relative',
@@ -106,14 +107,14 @@ export const styles = {
   }),
 
   instructorSection: css({
-    paddingTop: { base: '60px', md: '80px' },
-    paddingBottom: { base: '80px', md: '120px' },
+    paddingTop: '100px',
+    paddingBottom: '100px',
     paddingLeft: { base: '20px', md: '50px' },
     paddingRight: { base: '20px', md: '50px' },
     backgroundColor: 'white',
   }),
   instructorContainer: css({
-    maxWidth: '1200px',
+    maxWidth: '1280px',
     margin: '0 auto',
   }),
   instructorTitle: css({
@@ -173,7 +174,7 @@ export const styles = {
     padding: '0 8px',
   }),
   instructorDesc: css({
-    fontSize: { base: '14px', md: '15px' },
+    fontSize: '18px',
     color: '#4b5563',
     lineHeight: '1.6',
     wordBreak: 'keep-all',

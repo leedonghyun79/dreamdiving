@@ -5,7 +5,7 @@ export const styles = {
   container: css({ width: '100%', bg: 'white', pb: '120px' }),
   heroSection: flex({ 
     width: '100%', 
-    height: '400px', 
+    height: '410px', 
     bg: 'black', 
     align: 'center', 
     justify: 'center' 
@@ -21,7 +21,7 @@ export const styles = {
     zIndex: 10,
   }),
   navLink: (isActive: boolean) => css({
-    fontSize: '15px',
+    fontSize: '17px',
     fontWeight: isActive ? '700' : '500',
     color: isActive ? '#267db6' : '#666',
     position: 'relative',
@@ -36,5 +36,5 @@ export const styles = {
     height: '2px',
     bg: '#267db6',
   }),
-  mainContent: css({ maxW: '1200px', mx: 'auto', px: '24px', pt: '80px' })
+  mainContent: css({ maxW: '1280px', mx: 'auto', px: '24px', pt: '80px' })
 };

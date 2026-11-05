@@ -1,13 +1,24 @@
 'use client';
 
-import ScrollRevealText from '@/app/components/common/ScrollRevealText';
+import ScrollRevealText, { getRevealTime } from '@/app/components/common/ScrollRevealText';
 import { COLOR } from '@/app/constants/styles';
 
+// h2 → 본문 문단 순서로 이어서 나오도록 시간 계산
+const H2_END = Math.max(
+  getRevealTime('체계적인 교육과', 40),
+  getRevealTime('국내의 투어로', 40),
+  getRevealTime('완성되는 다이버의 꿈', 40)
+);
+const P1_TEXT = '드림다이브는 수도권 최고의 스쿠버 교육 전형을 운영하며 오픈워터 입문부터 스쿠버 강사교육까지 다이빙 강사 교육을 전형하는 전문 다이빙스쿨입니다.';
+const P2_TEXT = 'K26 다이빙 풀장과 서울 올림픽 수영장을 교육 장소로 활용합니다.';
+const P1_END = getRevealTime(P1_TEXT, 15, H2_END);
+const P2_END = getRevealTime(P2_TEXT, 15, P1_END);
+
 const FEATURE_IMAGES = [
-  { src: '/assets/main/49eab77bb0b32.jpg', alt: '체계적인 교육' },
-  { src: '/assets/main/fb5797dd599e9.jpg', alt: '국내 투어' },
-  { src: '/assets/main/8521cb2ab2e41.jpg', alt: '다이빙 경험' },
-  { src: '/assets/main/49eab77bb0b32.jpg', alt: '전문 강사진' },
+  { src: '/assets/main/49eab77bb0b32.webp', alt: '체계적인 교육' },
+  { src: '/assets/main/fb5797dd599e9.webp', alt: '국내 투어' },
+  { src: '/assets/main/8521cb2ab2e41.webp', alt: '다이빙 경험' },
+  { src: '/assets/main/49eab77bb0b32.webp', alt: '전문 강사진' },
 ];
 
 export function EducationFeatureSection() {
@@ -32,7 +43,7 @@ export function EducationFeatureSection() {
         <div>
           <h2
             style={{
-              fontSize: '44px',
+              fontSize: '36px',
               fontWeight: '900',
               lineHeight: '1.3',
               marginBottom: '32px',
@@ -63,8 +74,9 @@ export function EducationFeatureSection() {
             }}
           >
             <ScrollRevealText
-              text="드림다이브는 수도권 최고의 스쿠버 교육 전형을 운영하며 오픈워터 입문부터 스쿠버 강사교육까지 다이빙 강사 교육을 전형하는 전문 다이빙스쿨입니다."
+              text={P1_TEXT}
               charDelay={15}
+              delay={H2_END}
             />
           </p>
 
@@ -78,8 +90,9 @@ export function EducationFeatureSection() {
             }}
           >
             <ScrollRevealText
-              text="K26 다이빙 풀장과 서울 올림픽 수영장을 교육 장소로 활용합니다."
+              text={P2_TEXT}
               charDelay={15}
+              delay={P1_END}
             />
           </p>
 
@@ -94,6 +107,7 @@ export function EducationFeatureSection() {
             <ScrollRevealText
               text="체계적인 교육과 국내의 투어로 다이버의 꿈을 완성하세요."
               charDelay={15}
+              delay={P2_END}
             />
           </p>
         </div>

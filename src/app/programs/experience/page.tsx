@@ -7,6 +7,7 @@ const experienceProgram: ProgramDetail = {
   nameKo: '체험 다이빙',
   description: '신비로운 바닷속 세계로 떠나는 특별한 경험!\n안전하고 즐겁게 체험 다이빙을 즐겨보세요.',
   courseTitle: '체험 다이빙 코스',
+  courseImage: encodeURI('/assets/프로그램 안내/체험다이빙.webp'),
   courseDescriptions: [
     'BSAC 오션 다이버 교육과정을 이용해서 다이빙에 대해 경험하고 이해할 수 있는 기회를 제공합니다.',
     '다이빙 자격증 없이도 참여 가능하며, 약 2시간동안 수중 체험을 통해 다이빙의 즐거움을 느껴보세요.',

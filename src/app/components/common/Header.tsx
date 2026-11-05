@@ -2,8 +2,9 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { styles } from './Header.styles';
+import { AuthModal } from './AuthModal';
 
 const NAV_ITEMS = [
   {
@@ -80,6 +81,10 @@ const NAV_ITEMS = [
 export default function Header() {
   const pathname = usePathname();
   const [openMenu, setOpenMenu] = useState<string | null>(null);
+  // TODO: 인증 연동 후 실제 로그인 상태로 교체
+  const isLoggedIn = false;
+  const [loginOpen, setLoginOpen] = useState(false);
+  const closeLogin = useCallback(() => setLoginOpen(false), []);
 
   return (
     <header className={styles.header}>
@@ -138,27 +143,39 @@ export default function Header() {
           })}
         </ul>
 
-        {/* 우측 문의하기 버튼 */}
-        <Link
-          href="/reservation/inquiry"
-          className={styles.inquiryButton}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-          </svg>
-          상담문의하기
-        </Link>
+        {/* 우측 로그인 / 회원가입 */}
+        <div className={styles.authGroup}>
+          {isLoggedIn ? (
+            <>
+              <Link href="/mypage" className={styles.authLink}>
+                마이페이지
+              </Link>
+              <button
+                type="button"
+                className={styles.authLink}
+                onClick={() => {
+                  // TODO: 로그아웃 처리 연결 (인증 연동 후)
+                }}
+              >
+                로그아웃
+              </button>
+            </>
+          ) : (
+            <>
+              <button type="button" className={styles.authLink} onClick={() => setLoginOpen(true)}>
+                로그인
+              </button>
+              <Link href="/signup" className={styles.authLink}>
+                회원가입
+              </Link>
+            </>
+          )}
+        </div>
       </nav>
+
+      {!isLoggedIn && (
+        <AuthModal open={loginOpen} onClose={closeLogin} />
+      )}
     </header>
   );
 }

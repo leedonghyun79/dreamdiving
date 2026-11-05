@@ -1,6 +1,12 @@
 'use client';
 
-import ScrollRevealText from '@/app/components/common/ScrollRevealText';
+import ScrollRevealText, { getRevealTime } from '@/app/components/common/ScrollRevealText';
+
+// h2 두 줄이 끝난 뒤에 본문이 이어지도록 시간 계산
+const H2_END = Math.max(
+  getRevealTime('수중 세계의 전문가와 함께하는', 45),
+  getRevealTime('맞춤형 스쿠버 다이빙 여정.', 45)
+);
 import { COMMON_STYLES, COLOR } from '@/app/constants/styles';
 
 export function MainAboutSection() {
@@ -23,14 +29,10 @@ export function MainAboutSection() {
         }}
       >
         <div>
-          <div style={COMMON_STYLES.badge}>
-
-            Expert Instructor
-          </div>
 
           <h2
             style={{
-              fontSize: '44px',
+              fontSize: '36px',
               fontWeight: '900',
               lineHeight: '1.2',
               marginBottom: '24px',
@@ -58,11 +60,13 @@ export function MainAboutSection() {
             <ScrollRevealText
               text="믿을 수 있는 전문 강사진과 함께하는 다이빙, 1:1 맞춤 교육부터 강사 양성까지"
               charDelay={20}
+              delay={H2_END}
             />
             <br />
             <ScrollRevealText
               text="체계적인 교육 과정을 제공합니다."
               charDelay={20}
+              delay={getRevealTime('믿을 수 있는 전문 강사진과 함께하는 다이빙, 1:1 맞춤 교육부터 강사 양성까지', 20, H2_END)}
             />
           </p>
 
@@ -115,7 +119,7 @@ export function MainAboutSection() {
             }}
           >
             <img
-              src="/assets/main/49eab77bb0b32.jpg"
+              src="/assets/main/49eab77bb0b32.webp"
               alt="다이빙 1"
               style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />
@@ -124,14 +128,14 @@ export function MainAboutSection() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             <div style={{ borderRadius: '16px', overflow: 'hidden', height: '220px' }}>
               <img
-                src="/assets/main/fb5797dd599e9.jpg"
+                src="/assets/main/fb5797dd599e9.webp"
                 alt="다이빙 2"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
               />
             </div>
             <div style={{ borderRadius: '16px', overflow: 'hidden', height: '220px' }}>
               <img
-                src="/assets/main/8521cb2ab2e41.jpg"
+                src="/assets/main/8521cb2ab2e41.webp"
                 alt="다이빙 3"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
               />

@@ -40,7 +40,7 @@ export function Footer({ onOpenModal }: FooterProps) {
               개인정보처리방침
             </button>
           </div>
-          <p style={{ fontSize: '13px', color: '#4a5568' }}>
+          <p style={{ fontSize: '13px', color: '#8b9bb4' }}>
             © 2026 드림다이브. All rights reserved.
           </p>
         </div>

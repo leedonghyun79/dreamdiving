@@ -51,8 +51,16 @@ export default function ProgramsLayout({ children }: { children: React.ReactNode
   return (
     <div className={styles.container}>
       {/* Hero Section (Shared across all program pages) */}
-      <div className={styles.heroSection}>
-        {/* Placeholder for future background image */}
+      <div style={{ paddingTop: '100px' }}>
+        <div
+          className={styles.heroSection}
+          style={{
+            backgroundImage: `url(${encodeURI('/assets/프로그램 안내/프로그램 안내 히어로 이미지.webp')})`,
+            backgroundSize: 'cover',
+            backgroundPosition: '15% 48%',
+          }}
+        />
+
       </div>
 
       {/* Shared Navigation */}

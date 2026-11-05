@@ -34,26 +34,23 @@ export default function InstructorsPage() {
               Professional Team
             </div>
             <h2 className={styles.mainTitle}>
-              전문성과 안전을 <br />
-              최우선으로
+              전문성과 안전을 최우선으로
             </h2>
-            <p className={styles.mainDescription}>
-              수도권 최고의 스쿠버 교육 전문 다이빙스쿨로, 10년차 이상의 베테랑 강사진이
-              <br />
-              체계적인 교육부터 국내외 투어까지 함께합니다.
-              <br />
-              <br />
-              초보자부터 고급 다이버까지, 안전한 환경에서 신비로운 수중 세계로의 탐험을
-              <br />
-              책임지겠습니다.
-            </p>
+            <div className={styles.mainDescription}>
+              <p style={{ margin: '0 0 20px' }}>
+                수도권 최고의 스쿠버 교육 전문 다이빙스쿨로, 10년차 이상의 베테랑 강사진이 체계적인 교육부터 국내외 투어까지 함께합니다.
+              </p>
+              <p style={{ margin: 0 }}>
+                초보자부터 고급 다이버까지, 안전한 환경에서 신비로운 수중 세계로의 탐험을 책임지겠습니다.
+              </p>
+            </div>
             <div className={styles.statsContainer}>
               <div>
                 <div className={styles.statValue}>
                   10+
                 </div>
                 <div className={styles.statLabel}>
-                  년 경력
+                  스쿠버 교육 경력
                 </div>
               </div>
               <div>
@@ -61,7 +58,7 @@ export default function InstructorsPage() {
                   BSAC
                 </div>
                 <div className={styles.statLabel}>
-                  공인 강사
+                  국제 공인 강사 자격
                 </div>
               </div>
             </div>
@@ -70,7 +67,7 @@ export default function InstructorsPage() {
           {/* 오른쪽: 이미지 */}
           <div className={styles.imageContainer}>
             <Image
-              src="/assets/main/오션 어드벤쳐 다이버.jpg"
+              src="/assets/main/오션 어드벤쳐 다이버.webp"
               alt="강사진과 함께하는 다이빙"
               fill
               className={styles.imageCover}

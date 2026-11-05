@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import ScrollRevealText from '@/app/components/common/ScrollRevealText';
+import ScrollRevealText, { getRevealTime } from '@/app/components/common/ScrollRevealText';
 import { PROGRAMS } from '@/app/constants/data';
 import { COMMON_STYLES, COLOR } from '@/app/constants/styles';
 
@@ -20,14 +20,11 @@ export function ProgramSection() {
       <div style={{ maxWidth: '1520px', margin: '0 auto', padding: '0 50px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '60px' }}>
           <div>
-            <div style={COMMON_STYLES.badge}>
-              Programs
-            </div>
             <h2 style={COMMON_STYLES.heading2}>
               <ScrollRevealText text="프로그램 안내" charDelay={40} />
             </h2>
             <p style={COMMON_STYLES.subtitle}>
-              <ScrollRevealText text="입문부터 강사과정까지, 수도권 최고의 다이빙 교육을 경험하세요." charDelay={25} />
+              <ScrollRevealText text="입문부터 강사과정까지, 수도권 최고의 다이빙 교육을 경험하세요." charDelay={25} delay={getRevealTime('프로그램 안내', 40)} />
             </p>
           </div>
           <div style={{ display: 'flex', gap: '12px', marginBottom: '8px' }}>

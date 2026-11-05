@@ -7,6 +7,7 @@ const programData: ProgramDetail = {
   nameKo: '다이브 리더',
   description: '프로 다이버의 시작, 그룹 가이딩과 다이브 마스터의 역할!\n다이빙 투어를 기획하고 리딩할 수 있는 전문가가 되세요.',
   courseTitle: '다이브 리더 코스',
+  courseImage: encodeURI('/assets/프로그램 안내/다이버 리더 코스.webp'),
   courseDescriptions: [
     '다이빙 운영 및 관리, 날씨와 해양 조건 분석, 그룹 통제 등 프로페셔널 다이버로서 갖춰야 할 지도력과 실무 능력을 기릅니다.',
     '실제 다이빙 현장에서 브리핑을 진행하고 투어를 리딩하는 실습을 통해 실전 감각을 극대화합니다.',

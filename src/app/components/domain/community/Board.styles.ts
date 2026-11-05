@@ -1,7 +1,7 @@
 import { css } from '@styled-system/css';
 
 export const styles = {
-  wrap: css({ w: '100%', maxW: '1200px', mx: 'auto', px: { base: '16px', md: '24px' }, pt: '40px', pb: '120px' }),
+  wrap: css({ w: '100%', maxW: '1280px', mx: 'auto', px: { base: '16px', md: '24px' }, pt: '40px', pb: '120px' }),
 
   titleBox: css({ textAlign: 'center', mb: { base: '40px', md: '60px' } }),
   titleEn: css({ fontSize: { base: '22px', md: '26px' }, fontStyle: 'italic', color: '#888', fontWeight: '300' }),

@@ -11,7 +11,7 @@ export const styles = {
   courseSection: grid({ columns: { base: 1, md: 2 }, gap: '60px', mb: '80px', alignItems: 'center' }),
   courseTextContainer: flex({ direction: 'column', gap: '24px' }),
   courseTitle: css({ fontSize: '24px', fontWeight: '700', color: '#222' }),
-  courseDescriptions: flex({ direction: 'column', gap: '16px', color: '#555', fontSize: '15px', lineHeight: '1.6', wordBreak: 'keep-all' }),
+  courseDescriptions: flex({ direction: 'column', gap: '16px', color: '#555', fontSize: '18px', lineHeight: '1.6', wordBreak: 'keep-all' }),
   
   reserveButton: css({
     display: 'inline-flex',

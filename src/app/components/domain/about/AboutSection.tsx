@@ -10,7 +10,7 @@ export function AboutSection() {
     >
       <div
         style={{
-          maxWidth: '1200px',
+          maxWidth: '1280px',
           margin: '0 auto',
           padding: '0 20px',
           display: 'grid',
@@ -23,7 +23,7 @@ export function AboutSection() {
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
           <div style={{ marginBottom: '16px' }}>
             <img
-              src="/assets/dreamdive_about/title.png"
+              src="/assets/dreamdive_about/title.webp"
               alt="DREAM DIVE"
               style={{ width: '400px', maxWidth: '100%', height: 'auto', objectFit: 'contain' }}
             />
@@ -54,18 +54,24 @@ export function AboutSection() {
             즐거운 고퀄리티 전담 수중 교육,
           </h2>
 
-          <p
+          <div
             style={{
-              fontSize: '16px',
+              fontSize: '18px',
               color: '#666',
               lineHeight: '1.6',
               wordBreak: 'keep-all',
             }}
           >
-            교육진행은 프라이빗 1:1 교육 및 2:1교육과 클래스 두가지로
-            <br />
-            전문 강사진의 엄격한 관리하에 진행됩니다.
-          </p>
+            <p style={{ margin: '0 0 20px' }}>
+              드림 다이브는 수도권 최고의 스쿠버 교육센터로, 오픈워터 입문부터 스쿠버 강사 교육, 테크니컬 다이빙 강사 교육까지 전문적으로 진행합니다.
+            </p>
+            <p style={{ margin: '0 0 20px' }}>
+              10년차 이상의 강사진이 교육 후 체계적인 국내외 투어까지 함께하며, 신비로운 수중 세계의 탐험을 책임지겠습니다.
+            </p>
+            <p style={{ margin: 0 }}>
+              교육은 프라이빗 1:1, 2:1 및 클래스 두 가지 방식으로 진행되며, 전문 강사진의 엄격한 관리 아래 운영됩니다.
+            </p>
+          </div>
         </div>
 
         {/* Right Side: Image with gradient fade */}
@@ -81,7 +87,7 @@ export function AboutSection() {
             }}
           >
             <img
-              src="/assets/dreamdive_about/right_img.png"
+              src="/assets/dreamdive_about/right_img.webp"
               alt="Dream Dive Instructors"
               style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />

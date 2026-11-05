@@ -7,7 +7,7 @@ export const styles = {
     height: '410px', 
     bg: bgImage ? 'transparent' : 'black',
     backgroundSize: 'cover',
-    backgroundPosition: 'center',
+    backgroundPosition: '15% 48%',
     align: 'center', 
     justify: 'center',
     position: 'relative',

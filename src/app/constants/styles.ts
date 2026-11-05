@@ -28,7 +28,7 @@ export const COMMON_STYLES = {
   },
   // 제목 스타일 (h2)
   heading2: {
-    fontSize: '40px',
+    fontSize: '36px',
     fontWeight: '900',
     color: '#1f1e1e',
     lineHeight: '1.2',
@@ -37,7 +37,7 @@ export const COMMON_STYLES = {
   },
   // 부제 스타일 (p)
   subtitle: {
-    fontSize: '17px',
+    fontSize: '18px',
     color: '#666',
     wordBreak: 'keep-all' as const,
   },
